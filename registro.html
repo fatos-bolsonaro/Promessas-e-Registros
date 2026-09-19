@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Promessa e Registro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FFFFFF;--ink:#111110;--soft:#4E4840;--accent:#0D5049;--accent-tint:#E6F0EE;
+  --panel:#F7F5F0;--rule:#E5E0D5;--warn:#8A5A16;
+  --serif:'Fraunces',Georgia,serif;--sans:'Inter',system-ui,-apple-system,Segoe UI,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0F0F0E;--ink:#F3F0E9;--soft:#ABA59A;--accent:#6FC4B6;
+  --accent-tint:#152623;--panel:#191917;--rule:#2E2C27;--warn:#D6A05A;}}
+:root[data-theme="dark"]{--paper:#0F0F0E;--ink:#F3F0E9;--soft:#ABA59A;--accent:#6FC4B6;
+  --accent-tint:#152623;--panel:#191917;--rule:#2E2C27;--warn:#D6A05A;}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.62}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+a{color:inherit}
+h1,h2{font-family:var(--serif);letter-spacing:-.015em;font-weight:600;margin:0}
+.bar{border-bottom:1px solid var(--rule);font-size:13px;color:var(--soft);padding:13px 0}
+.bar .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.hero{padding:74px 0 66px}
+.herogrid{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:start}
+.eyebrow{font-size:14.5px;color:var(--soft);margin:0 0 26px;padding-bottom:16px;border-bottom:2px solid var(--ink);display:inline-block}
+.stage{position:relative;min-height:290px}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;pointer-events:none}
+.slide.on{opacity:1;pointer-events:auto}
+.slide h1{font-size:clamp(25px,3.5vw,38px);line-height:1.18;max-width:19ch}
+.slide .foot{margin:22px 0 0;font-size:13.5px;color:var(--soft)}
+.slide .foot .lv{color:var(--accent);background:var(--accent-tint);padding:3px 10px;border-radius:99px;margin-right:9px;display:inline-block}
+.dots{display:flex;gap:6px;margin-top:30px;flex-wrap:wrap}
+.dot{width:22px;height:3px;border:0;padding:0;background:var(--rule);cursor:pointer;border-radius:2px;transition:background .3s}
+.dot[aria-current="true"]{background:var(--accent)}
+.lede{margin:0;font-size:17px;color:var(--soft);max-width:44ch;padding-top:6px}
+.lede b{color:var(--ink);font-weight:600}
+.staticlist{display:none}
+.staticlist li{font-family:var(--serif);font-size:19px;line-height:1.4;margin-bottom:18px;max-width:40ch}
+
+.cont{background:var(--panel);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:46px 0}
+.cont h2{font-size:22px;margin-bottom:12px}
+.cont p{color:var(--soft);max-width:66ch;margin:0 0 12px;font-size:16.5px}
+.cont .caveat{font-size:14.5px;border-left:3px solid var(--accent);padding-left:14px;margin-top:20px}
+
+.eixos{padding:60px 0 8px}
+.sub{color:var(--soft);font-size:16px;margin:8px 0 26px;max-width:62ch}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.eixo{background:var(--paper);padding:22px;text-align:left;border:0;font:inherit;color:inherit;cursor:pointer;transition:background .12s;display:flex;flex-direction:column}
+.eixo:hover{background:var(--panel)}
+.eixo[aria-pressed="true"]{background:var(--accent-tint);box-shadow:inset 3px 0 0 var(--accent)}
+.eixo .n{font-weight:600;font-size:16.5px;margin:0}
+.eixo .qt{font-size:13px;color:var(--soft);margin:3px 0 0}
+.eixo .c{color:var(--soft);font-size:13.5px;margin:9px 0 0;line-height:1.5;flex:1}
+.eixo .p{font-family:var(--serif);font-style:italic;color:var(--soft);font-size:14.5px;margin:18px 0 0;padding-top:13px;border-top:1px solid var(--rule)}
+
+.arquivo{padding:56px 0}
+.controls{display:flex;gap:9px;flex-wrap:wrap;align-items:center;padding:14px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.controls .lbl{font-size:13.5px;color:var(--soft)}
+.chip{border:1px solid var(--rule);background:transparent;color:var(--soft);font:inherit;font-size:13.5px;padding:5px 12px;border-radius:99px;cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);background:var(--accent-tint)}
+.count{margin-left:auto;font-size:13.5px;color:var(--soft)}
+.item{padding:30px 0;border-bottom:1px solid var(--rule);scroll-margin-top:20px}
+.item:target{background:var(--accent-tint);box-shadow:-14px 0 0 var(--accent-tint),14px 0 0 var(--accent-tint)}
+.foot2{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:9px}
+.share{border:0;background:none;padding:0;font:inherit;font-size:12.5px;color:var(--soft);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.share:hover{color:var(--accent)}
+.promessa-hd{margin:34px 0 -8px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+.promessa-hd .q{font-family:var(--serif);font-style:italic;font-size:21px;margin:0}
+.promessa-hd .s{font-size:13.5px;color:var(--soft);margin:5px 0 0}
+.sortbox{display:flex;gap:9px;align-items:center;padding:12px 0 0}
+.sortbox .lbl{font-size:13.5px;color:var(--soft)}
+.objecao{background:var(--panel);border-top:1px solid var(--rule);padding:44px 0}
+.objecao h2{font-size:21px;margin-bottom:12px}
+.objecao p{color:var(--soft);max-width:64ch;font-size:16.5px;margin:0 0 12px}
+.objecao p:last-child{margin-bottom:0}
+.date{font-size:13.5px;color:var(--soft);display:block;margin-bottom:10px}
+.fato{font-family:var(--serif);font-size:20px;line-height:1.45;margin:0;max-width:66ch}
+.against{margin:15px 0 0;padding-top:12px;border-top:1px dotted var(--rule);font-size:14.5px;color:var(--soft);max-width:66ch}
+.against b{font-family:var(--serif);font-style:italic;font-weight:600}
+.decisao{margin:11px 0 0;padding:11px 14px;border-left:3px solid var(--accent);
+  background:var(--accent-tint);font-size:14.5px;max-width:66ch;border-radius:0 3px 3px 0}
+.decisao b{font-family:var(--serif);font-style:italic;font-weight:600;color:var(--accent)}
+.src{margin:15px 0 0;font-size:13.5px;color:var(--soft)}
+.src a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+.pend{color:var(--warn);border:1px dashed currentColor;padding:1px 8px;border-radius:3px;font-size:12.5px}
+.tier{display:inline-block;margin-top:9px;font-size:12px;padding:3px 10px;border-radius:99px;border:1px solid}
+.t1{color:var(--accent);border-color:var(--accent);background:var(--accent-tint)}
+.t2{color:var(--soft);border-color:var(--soft)}
+.t3{color:var(--soft);border-color:var(--rule)}
+.t4{color:var(--soft);border-color:var(--rule);border-style:dashed}
+.empty{padding:44px 0;color:var(--soft)}
+
+.metodo{padding:56px 0;border-top:1px solid var(--rule)}
+.metodo p{max-width:66ch;color:var(--soft);font-size:16px}
+.tiers{margin:26px 0 0;border-top:1px solid var(--rule)}
+.tiers div{display:grid;grid-template-columns:230px 1fr;gap:22px;padding:13px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.tiers span:first-child{font-weight:600;color:var(--ink)}
+.tiers span:last-child{color:var(--soft)}
+footer{padding:36px 0 72px;font-size:14px;color:var(--soft)}
+.sign{border:1px dashed var(--rule);padding:17px 19px;border-radius:4px;max-width:58ch}
+@media (max-width:900px){.herogrid{grid-template-columns:1fr;gap:40px}.grid{grid-template-columns:1fr 1fr}.lede{max-width:60ch}}
+@media (max-width:700px){body{font-size:16px}.wrap{padding:0 20px}.hero{padding:48px 0 44px}
+  .stage{min-height:250px}.grid{grid-template-columns:1fr}.fato{font-size:18.5px}
+  .tiers div{grid-template-columns:1fr;gap:3px}.count{margin-left:0;width:100%}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}
+  .stage,.dots{display:none}.staticlist{display:block;list-style:none;padding:0;margin:0}}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div class="bar"><div class="wrap"><span>Promessa e Registro</span><span id="bar-count"></span></div></div>
+
+<header class="hero"><div class="wrap herogrid">
+  <div>
+    <p class="eyebrow">Governo Jair Bolsonaro, 2019–2022</p>
+    <div class="stage" id="stage"></div>
+    <div class="dots" id="dots"></div>
+    <ul class="staticlist" id="staticlist"></ul>
+  </div>
+  <p class="lede">Este arquivo não usa a régua de quem sempre foi contra. Usa a régua de 2018: <b>o que foi prometido a quem votou nele, e o que ficou registrado</b> em decisão judicial, ato oficial ou gravação. Cada item traz a fonte, o link do original e o que a defesa alega. Onde não existe documento, não existe item.</p>
+</div></header>
+
+<section class="cont"><div class="wrap">
+  <h2>Por que isto importa em 2026</h2>
+  <p>Jair Bolsonaro perdeu os direitos políticos e não pode ser votado. A candidatura de Flávio Bolsonaro se apresenta publicamente como continuidade do governo de 2019 a 2022 — é assim que ela se comunica com o eleitorado e é assim que o eleitorado a recebe.</p>
+  <p>Se o programa é a continuidade daquele governo, então o registro daquele governo é a informação mais relevante que existe para decidir o voto.</p>
+  <p class="caveat">Este arquivo não faz nenhuma afirmação sobre a conduta de Flávio Bolsonaro. O vínculo aqui é programático, declarado pela própria campanha, e não pessoal.</p>
+</div></section>
+
+<section class="eixos"><div class="wrap">
+  <h2>Os compromissos de 2018</h2>
+  <p class="sub">Cada card é uma promessa de campanha. Clique para ver o que ficou registrado.</p>
+  <div class="grid" id="eixos"></div>
+</div></section>
+
+<section class="arquivo"><div class="wrap">
+  <h2>Registro</h2>
+  <p class="sub">Ordenado do nível de prova mais alto para o mais baixo.</p>
+  <div class="controls">
+    <span class="lbl">Nível de prova</span>
+    <button class="chip" data-tier="all" aria-pressed="true">Todos</button>
+    <button class="chip" data-tier="1" aria-pressed="false">Decisão definitiva</button>
+    <button class="chip" data-tier="2" aria-pressed="false">Ato oficial ou gravação</button>
+    <button class="chip" data-tier="3" aria-pressed="false">Acusação em curso</button>
+    <button class="chip" data-tier="4" aria-pressed="false">Apuração jornalística</button>
+    <span class="count" id="count"></span>
+  </div>
+  <div class="sortbox">
+    <span class="lbl">Ordenar por</span>
+    <button class="chip" data-sort="tier" aria-pressed="true">Força da prova</button>
+    <button class="chip" data-sort="crono" aria-pressed="false">Ordem cronológica</button>
+    <button class="chip" data-sort="promessa" aria-pressed="false">Promessa de 2018</button>
+  </div>
+  <div id="lista"></div>
+</div></section>
+
+<section class="objecao"><div class="wrap">
+  <h2>“E os outros governos?”</h2>
+  <p>É a primeira pergunta que ocorre a quem lê isto, e ela é razoável. Este arquivo não afirma que outros governos brasileiros tenham sido honestos, competentes ou cuidadosos com as instituições. Não é disso que ele trata.</p>
+  <p>A pergunta aqui é mais estreita e tem resposta verificável: <strong style="color:var(--ink)">o governo eleito em 2018 cumpriu o que prometeu a quem votou nele?</strong> Comparar governos é uma pergunta diferente, legítima, e que exige um trabalho diferente deste.</p>
+  <p>Se o argumento para relativizar o que está acima for “todos fazem igual”, vale notar o que isso concede: que a promessa de 2018 era justamente não ser igual.</p>
+</div></section>
+
+<section class="metodo"><div class="wrap">
+  <h2>Como este arquivo foi feito</h2>
+  <p>Um item só entra se puder ser sustentado por decisão judicial, ato publicado em diário oficial, gravação em que ele próprio fala, acusação formal de órgão público, ou reportagem baseada em documento verificável. Boato, print e ilação não entram, ainda que plausíveis. Fatos sobre terceiros só entram quando o ato é do governo ou da Presidência.</p>
+  <div class="tiers">
+    <div><span>Decisão definitiva</span><span>Condenação transitada em julgado ou decisão judicial sem recurso pendente.</span></div>
+    <div><span>Ato oficial ou gravação</span><span>Decreto, nomeação, exoneração, veto, indulto ou sigilo publicado no Diário Oficial; ou vídeo e áudio em que ele próprio fala.</span></div>
+    <div><span>Acusação em curso</span><span>Indiciamento da Polícia Federal, denúncia da PGR ou conclusão de CPI. Acusação, não culpa.</span></div>
+    <div><span>Apuração jornalística</span><span>Reportagem ancorada em documento público verificável. É o nível mais fraco: leia junto o que a defesa alega e as decisões judiciais já proferidas sobre o caso.</span></div>
+  </div>
+  <p style="margin-top:26px">Encontrou um erro? Escreva. A correção é publicada com a data ao lado do item. Um arquivo que não corrige não vale nada.</p>
+</div></section>
+
+<footer><div class="wrap"><div class="sign">
+  <strong style="color:var(--ink)">Responsável por esta página</strong><br>
+  [seu nome completo] — [seu e-mail]<br>
+  <span style="font-size:13px">Substitua antes de publicar. Página identificada, sem patrocínio e sem impulsionamento pago.</span>
+</div></div></footer>
+
+<script>
+/* ==========================================================================
+   ADICIONAR ITEM: copie um bloco e preencha.
+     eixo     "corrupcao" | "velha" | "fiscal" | "instituic" | "gestao" | "brasil"
+     tier     1 decisão definitiva · 2 ato oficial ou gravação
+              3 acusação em curso · 4 apuração jornalística
+     fonte    {veiculo:"...", url:"..."}   url vazia = aviso laranja
+     destaque OPCIONAL, frase curta que entra no rodízio do topo (8 a 12 no total)
+   ========================================================================== */
+
+const EIXOS = [
+  {id:"corrupcao", promessa:"“Vou acabar com a corrupção”", nome:"Combate à corrupção", contexto:"Eleito sobre a Lava Jato, com Sergio Moro como fiança moral do projeto."},
+  {id:"velha",     promessa:"“Fim da velha política”", nome:"Ruptura com o toma-lá-dá-cá", contexto:"Prometeu governar sem fisiologismo, loteamento de cargos e Centrão."},
+  {id:"fiscal",    promessa:"“Estado mínimo, privatizar”", nome:"Promessa liberal e contas públicas", contexto:"Paulo Guedes como selo de credibilidade junto ao mercado e ao eleitor liberal."},
+  {id:"instituic", promessa:"“Dentro das quatro linhas”", nome:"Instituições e democracia", contexto:"Prometeu ordem institucional e respeito ao resultado das urnas."},
+  {id:"gestao",    promessa:"“Técnicos, não políticos”", nome:"Gestão e competência", contexto:"Prometeu escolher por capacidade técnica, não por barganha partidária."},
+  {id:"brasil",    promessa:"“Defender o interesse nacional”", nome:"Imagem e interesse do país", contexto:"Prometeu recolocar o Brasil em posição forte no comércio e na diplomacia."}
+];
+
+const ITENS = [
+
+/* ===================== NÍVEL 1 — DECISÃO DEFINITIVA ===================== */
+{eixo:"instituic",tier:1,data:"11 de setembro de 2025",
+ fato:"A Primeira Turma do STF condenou Jair Bolsonaro a 27 anos e 3 meses de prisão por tentativa de golpe de Estado e outros quatro crimes. Em 25 de novembro de 2025 o processo transitou em julgado.",
+ defesa:"A defesa sustentou incompetência do STF para julgar o caso.",
+ decisao:"No julgamento, o ministro Luiz Fux votou pela anulação do processo e contra a condenação.",
+ fonte:{veiculo:"STF — AP 2668",url:""}},
+
+{eixo:"instituic",tier:1,data:"Dezembro de 2025",
+ destaque:"O STF concluiu que a PRF bloqueou ônibus de eleitores no Nordeste no dia da votação.",
+ fato:"O STF condenou Silvinei Vasques, ex-diretor-geral da Polícia Rodoviária Federal nomeado no governo, a 24 anos e 6 meses de prisão. A corte concluiu que ele usou a estrutura da PRF para coordenar blitzes e bloquear ônibus em regiões onde Lula tivera votação alta no primeiro turno, no dia do segundo turno de 2022.",
+ defesa:"Vasques negou direcionamento e afirmou que a fiscalização seguiu o padrão de anos anteriores.",
+ fonte:{veiculo:"STF",url:""}},
+
+{eixo:"instituic",tier:1,data:"30 de outubro de 2022",
+ fato:"A investigação da PF apurou que, no dia do segundo turno, a PRF abordou 2,1 mil ônibus no Nordeste contra 571 no Sudeste, sem justificativa técnica para a diferença. A ordem do então presidente do TSE para suspender as operações foi descumprida.",
+ defesa:"A direção da PRF alegou que a fiscalização foi proporcional e que ninguém deixou de votar em razão das operações.",
+ fonte:{veiculo:"Polícia Federal / TSE",url:""}},
+
+{eixo:"instituic",tier:1,data:"30 de junho de 2023",
+ fato:"O TSE declarou Bolsonaro inelegível por oito anos, por abuso de poder político e uso indevido dos meios de comunicação na reunião em que questionou o sistema eleitoral diante de embaixadores estrangeiros.",
+ defesa:"A defesa alegou que a reunião foi ato de governo, não propaganda eleitoral.",
+ fonte:{veiculo:"TSE — AIJE 0600814-85.2022.6.00.0000",url:""}},
+
+{eixo:"instituic",tier:1,data:"Outubro de 2023",
+ fato:"O TSE declarou Bolsonaro e Walter Braga Netto inelegíveis também pelo uso eleitoral das comemorações do 7 de Setembro de 2022, entendendo ter havido abuso de poder político e econômico em evento oficial de Estado.",
+ defesa:"",
+ fonte:{veiculo:"TSE",url:""}},
+
+{eixo:"instituic",tier:1,data:"Maio de 2023",
+ fato:"O STF declarou inconstitucional o indulto concedido por decreto ao deputado Daniel Silveira, condenado pela própria corte dias antes por ameaça a ministros e incitação à ruptura institucional. A corte entendeu que houve desvio de finalidade no uso do poder de graça.",
+ defesa:"O governo sustentou que o indulto é prerrogativa discricionária do presidente da República.",
+ fonte:{veiculo:"STF — ADIs 7154 e 7155",url:""}},
+
+{eixo:"velha",tier:1,data:"Dezembro de 2022",
+ destaque:"O STF declarou inconstitucional o orçamento secreto, mecanismo que sustentou a base no Congresso.",
+ fato:"O STF declarou inconstitucional o modelo de emendas de relator conhecido como orçamento secreto, por violar transparência e impessoalidade orçamentária. O mecanismo nasceu e se consolidou no governo como base da relação com o Centrão.",
+ defesa:"Aliados sustentaram que as emendas de relator eram forma legítima de participação do Congresso no orçamento.",
+ fonte:{veiculo:"STF — ADPFs 850, 851, 854 e 1014",url:""}},
+
+{eixo:"corrupcao",tier:1,data:"29 de abril de 2020",
+ destaque:"O STF suspendeu a nomeação do amigo da família que ele indicou para a direção-geral da PF.",
+ fato:"O STF suspendeu a nomeação de Alexandre Ramagem para a direção-geral da Polícia Federal, apontando indícios de desvio de finalidade no ato. Ramagem, então diretor da Abin e próximo da família presidencial, havia sido indicado dias após a saída de Sergio Moro.",
+ defesa:"O governo sustentou que a nomeação era prerrogativa exclusiva do presidente da República.",
+ fonte:{veiculo:"STF — MS 37.097",url:""}},
+
+{eixo:"gestao",tier:1,data:"15 de abril de 2020",
+ fato:"O STF decidiu que estados e municípios têm competência concorrente para adotar medidas sanitárias de isolamento e restrição, contrariando a posição do governo federal, que defendia centralizar a decisão na Presidência.",
+ defesa:"O governo sustentou que a fragmentação de regras prejudicava a economia e a coordenação nacional.",
+ fonte:{veiculo:"STF — ADI 6341",url:""}},
+
+{eixo:"instituic",tier:1,data:"2021 a 2023",
+ fato:"Decisões do STF invalidaram parte dos decretos que flexibilizaram o acesso a armas e munições, por fragilizarem os sistemas de controle e rastreabilidade. Os registros de colecionadores, atiradores e caçadores atingiram pico histórico em 2022.",
+ defesa:"O governo sustentou que a flexibilização ampliava o direito à legítima defesa.",
+ fonte:{veiculo:"STF / Exército Brasileiro",url:""}},
+
+/* ===================== NÍVEL 2 — ATO OFICIAL OU GRAVAÇÃO ===================== */
+{eixo:"corrupcao",tier:2,data:"24 de abril de 2020",
+ destaque:"O ministro que era sua principal fiança anticorrupção pediu demissão acusando-o de interferir na PF.",
+ fato:"Bolsonaro exonerou Maurício Valeixo da direção-geral da Polícia Federal por ato publicado no Diário Oficial, contrariando o então ministro da Justiça. Sergio Moro pediu demissão no mesmo dia, acusando-o de tentar interferir politicamente na PF para obter acesso a informações de inteligência.",
+ defesa:"Bolsonaro negou interferência e afirmou que a troca se deu por falta de interlocução com o diretor-geral.",
+ fonte:{veiculo:"Diário Oficial da União",url:""}},
+
+{eixo:"corrupcao",tier:2,data:"22 de abril de 2020",
+ fato:"Em reunião ministerial gravada, cuja divulgação foi autorizada pelo STF, Bolsonaro declarou que trocaria pessoas na estrutura de segurança porque não podia ser surpreendido com notícias envolvendo pessoas próximas a ele.",
+ defesa:"A defesa sustentou que a fala tratava da segurança pessoal da família, não da Polícia Federal.",
+ fonte:{veiculo:"Vídeo da reunião ministerial — STF",url:""}},
+
+{eixo:"brasil",tier:2,data:"22 de abril de 2020",
+ destaque:"Em reunião gravada, o ministro do Meio Ambiente propôs usar a pandemia para “passar a boiada”.",
+ fato:"Na mesma reunião gravada, o ministro do Meio Ambiente Ricardo Salles propôs aproveitar o foco da imprensa na pandemia para “ir passando a boiada” e flexibilizar normas infralegais de proteção ambiental.",
+ defesa:"Salles afirmou que se referia a simplificação regulatória, não a afrouxamento da fiscalização.",
+ fonte:{veiculo:"Vídeo da reunião ministerial — STF",url:""}},
+
+{eixo:"instituic",tier:2,data:"22 de abril de 2020",
+ fato:"Na mesma reunião gravada, o ministro da Educação Abraham Weintraub afirmou que prenderia os ministros do Supremo Tribunal Federal. Weintraub permaneceu no cargo por mais de um mês após a divulgação.",
+ defesa:"Weintraub disse depois que a fala foi desabafo pessoal e não posição de governo.",
+ fonte:{veiculo:"Vídeo da reunião ministerial — STF",url:""}},
+
+{eixo:"instituic",tier:2,data:"29 de julho de 2021",
+ fato:"Bolsonaro convocou transmissão nos canais oficiais da Presidência para apresentar alegações de fraude no sistema eleitoral. O TSE afirmou que nenhuma das alegações se sustentava e o episódio originou inquérito no Supremo.",
+ defesa:"Bolsonaro sustentou que apenas levantava dúvidas legítimas sobre a auditabilidade do sistema.",
+ fonte:{veiculo:"Transmissão oficial da Presidência",url:""}},
+
+{eixo:"instituic",tier:2,data:"18 de julho de 2022",
+ fato:"Bolsonaro reuniu embaixadores estrangeiros no Palácio da Alvorada para questionar o sistema eleitoral brasileiro. A reunião foi transmitida pela TV Brasil, emissora pública, com estrutura oficial do Estado.",
+ defesa:"O governo sustentou que se tratava de esclarecimento institucional a corpo diplomático.",
+ fonte:{veiculo:"TV Brasil / Planalto",url:""}},
+
+{eixo:"gestao",tier:2,data:"28 de abril de 2020",
+ destaque:"Perguntado sobre o recorde de mortes por covid, respondeu “e daí? Quer que eu faça o quê?”.",
+ fato:"Questionado por jornalistas sobre o recorde diário de mortes por covid-19, Bolsonaro respondeu em vídeo: “E daí? Lamento. Quer que eu faça o quê?”. O país viria a registrar mais de 690 mil mortes pela doença.",
+ defesa:"Bolsonaro afirmou depois que a frase foi tirada de contexto e que se referia à sua condição de não ser médico.",
+ fonte:{veiculo:"Registro em vídeo — imprensa credenciada",url:""}},
+
+{eixo:"gestao",tier:2,data:"Julho de 2020",
+ destaque:"Vetou a obrigatoriedade de máscara em comércio, escolas e templos. O Congresso derrubou.",
+ fato:"Bolsonaro vetou trechos da Lei 14.019/2020 que tornavam obrigatório o uso de máscara em estabelecimentos comerciais, escolas, igrejas e órgãos públicos. O Congresso Nacional derrubou os vetos.",
+ defesa:"O governo alegou que a obrigatoriedade invadia a esfera privada e a autonomia individual.",
+ fonte:{veiculo:"Diário Oficial — Lei 14.019/2020",url:""}},
+
+{eixo:"gestao",tier:2,data:"Outubro de 2021",
+ fato:"Bolsonaro vetou trechos da Lei 14.214/2021 que previam distribuição gratuita de absorventes a estudantes de baixa renda, pessoas em situação de rua e presas. O Congresso derrubou os vetos em 2022.",
+ defesa:"O governo alegou ausência de indicação de fonte orçamentária para custear a medida.",
+ fonte:{veiculo:"Diário Oficial — Lei 14.214/2021",url:""}},
+
+{eixo:"gestao",tier:2,data:"2020 e 2021",
+ fato:"O Ministério da Saúde teve quatro titulares durante a pandemia — Mandetta, Teich, Pazuello e Queiroga. Eduardo Pazuello, general do Exército sem formação médica, comandou a pasta na fase mais crítica da crise sanitária.",
+ defesa:"O governo sustentou que a gestão militar trouxe capacidade logística à pasta.",
+ fonte:{veiculo:"Diário Oficial da União",url:""}},
+
+{eixo:"gestao",tier:2,data:"2020 e 2021",
+ fato:"O governo promoveu publicamente cloroquina e o chamado tratamento precoce, sem comprovação científica de eficácia, incluindo produção do medicamento pelo laboratório do Exército e campanha oficial de divulgação.",
+ defesa:"O governo defendeu o direito do médico à prescrição off-label e negou ter imposto qualquer tratamento.",
+ fonte:{veiculo:"Ministério da Saúde",url:""}},
+
+{eixo:"gestao",tier:2,data:"Dezembro de 2020",
+ fato:"Em declarações públicas gravadas, Bolsonaro afirmou que não tomaria a vacina contra a covid-19 e desestimulou a imunização, em período em que o país negociava a compra de imunizantes.",
+ defesa:"Bolsonaro afirmou tratar-se de escolha pessoal e que nunca proibiu ninguém de se vacinar.",
+ fonte:{veiculo:"Pronunciamentos e transmissões oficiais",url:""}},
+
+{eixo:"instituic",tier:2,data:"23 de maio de 2021",
+ fato:"O general Eduardo Pazuello, na ativa e então ministro da Saúde, participou de ato político ao lado de Bolsonaro no Rio de Janeiro, em desacordo com o regulamento disciplinar do Exército. Não foi punido.",
+ defesa:"O Exército concluiu que não houve transgressão disciplinar por se tratar de agenda ministerial.",
+ fonte:{veiculo:"Ministério da Defesa / Exército Brasileiro",url:""}},
+
+{eixo:"corrupcao",tier:2,data:"2021 e 2022",
+ destaque:"Impôs sigilo de cem anos sobre o próprio cartão de vacinação e o acesso de familiares ao Planalto.",
+ fato:"O governo impôs sigilo de cem anos sobre documentos de interesse público, entre eles o cartão de vacinação do presidente e os registros de acesso de familiares ao Palácio do Planalto. Os sigilos foram posteriormente derrubados.",
+ defesa:"O governo alegou proteção de dados pessoais e razões de segurança.",
+ fonte:{veiculo:"CGU",url:""}},
+
+{eixo:"corrupcao",tier:2,data:"2019 a 2022",
+ fato:"Os gastos do cartão corporativo da Presidência foram mantidos sob sigilo durante o mandato. Os dados, divulgados depois, apontaram dezenas de milhões de reais em despesas no período.",
+ defesa:"O governo sustentou que o sigilo protegia a segurança presidencial.",
+ fonte:{veiculo:"Presidência da República",url:""}},
+
+{eixo:"velha",tier:2,data:"11 de abril de 2019",
+ fato:"O Decreto 9.759 extinguiu centenas de conselhos e colegiados de participação social ligados à administração federal, reduzindo os canais formais de controle da sociedade civil sobre políticas públicas.",
+ defesa:"O governo sustentou que o objetivo era reduzir estruturas burocráticas improdutivas.",
+ fonte:{veiculo:"Diário Oficial — Decreto 9.759/2019",url:""}},
+
+{eixo:"gestao",tier:2,data:"1º de janeiro de 2019",
+ fato:"A Medida Provisória 870 extinguiu o Ministério do Trabalho e o Conselho Nacional de Segurança Alimentar e Nutricional (Consea), órgão que coordenava a política de combate à fome no país.",
+ defesa:"O governo sustentou que as funções seriam absorvidas por outras pastas com ganho de eficiência.",
+ fonte:{veiculo:"Diário Oficial — MP 870/2019",url:""}},
+
+{eixo:"velha",tier:2,data:"2021 e 2022",
+ destaque:"Eleito contra a velha política, entregou a governabilidade ao Centrão e a Arthur Lira.",
+ fato:"Arthur Lira, um dos principais nomes do Centrão, tornou-se peça central da governabilidade, com distribuição de emendas e cargos como moeda de sustentação parlamentar — o modelo de coalizão que a campanha de 2018 prometera encerrar.",
+ defesa:"O governo sustentou que a articulação era necessária para aprovar sua agenda no Congresso.",
+ fonte:{veiculo:"Câmara dos Deputados",url:""}},
+
+{eixo:"fiscal",tier:2,data:"2021 e 2022",
+ fato:"O governo apoiou a PEC dos Precatórios e o pacote de benefícios aprovado às vésperas da eleição de 2022, medidas que contornaram o teto de gastos e ampliaram a despesa em ano eleitoral.",
+ defesa:"O governo sustentou que eram resposta emergencial à inflação e aos efeitos da pandemia.",
+ fonte:{veiculo:"Congresso Nacional",url:""}},
+
+{eixo:"fiscal",tier:2,data:"2021",
+ fato:"A privatização dos Correios foi aprovada na Câmara e não avançou no Senado. Das privatizações centrais prometidas por Paulo Guedes, apenas a Eletrobras se concretizou.",
+ defesa:"O governo atribuiu o resultado à resistência parlamentar e ao calendário eleitoral.",
+ fonte:{veiculo:"Senado Federal",url:""}},
+
+{eixo:"fiscal",tier:2,data:"2021",
+ fato:"Diante da alta dos combustíveis, o governo trocou o comando da Petrobras e pressionou publicamente por mudança na política de preços, contrariando o compromisso de respeito à governança da companhia.",
+ defesa:"O governo afirmou que a mudança era prerrogativa do acionista controlador.",
+ fonte:{veiculo:"Petrobras — fato relevante",url:""}},
+
+{eixo:"gestao",tier:2,data:"2020 e 2021",
+ fato:"O Censo demográfico foi adiado sucessivamente por corte orçamentário, deixando o país sem a base estatística que orienta a distribuição de recursos públicos e o planejamento de políticas por mais de uma década.",
+ defesa:"O governo alegou restrição fiscal e os efeitos da pandemia sobre a coleta de campo.",
+ fonte:{veiculo:"IBGE",url:""}},
+
+{eixo:"gestao",tier:2,data:"2019 a 2022",
+ fato:"Orçamentos de fomento à ciência e à pós-graduação, incluindo CNPq e Capes, sofreram cortes e bloqueios sucessivos no período, com redução do número de bolsas de pesquisa.",
+ defesa:"O governo sustentou que os cortes decorriam de restrição fiscal geral e não de escolha setorial.",
+ fonte:{veiculo:"MCTI / Capes",url:""}},
+
+{eixo:"instituic",tier:2,data:"30 de dezembro de 2022",
+ fato:"Bolsonaro deixou o Brasil dois dias antes do fim do mandato e não participou da transmissão da faixa presidencial, quebrando a praxe republicana de transferência de poder.",
+ defesa:"",
+ fonte:{veiculo:"Registro público",url:""}},
+
+{eixo:"instituic",tier:2,data:"29 de março de 2021",
+ fato:"Os comandantes do Exército, da Marinha e da Aeronáutica deixaram os cargos conjuntamente, episódio sem precedente desde a redemocratização, em meio a crise com o Ministério da Defesa.",
+ defesa:"O governo tratou o episódio como troca ordinária de comando.",
+ fonte:{veiculo:"Ministério da Defesa",url:""}},
+
+{eixo:"instituic",tier:2,data:"4 de agosto de 2025",
+ fato:"Moraes decretou prisão domiciliar de Bolsonaro por descumprimento de medidas cautelares, incluindo a proibição de contato com autoridades estrangeiras e com o filho Eduardo, então nos Estados Unidos articulando sanções contra o Brasil.",
+ defesa:"A defesa sustentou que não houve descumprimento deliberado das medidas.",
+ fonte:{veiculo:"STF",url:""}},
+
+{eixo:"instituic",tier:2,data:"22 de novembro de 2025",
+ fato:"Bolsonaro danificou a própria tornozeleira eletrônica com um ferro de solda. O episódio foi registrado em vídeo divulgado pela PF com autorização do STF e levou à revogação da prisão domiciliar e à transferência para a Superintendência da Polícia Federal.",
+ defesa:"A defesa alegou que o uso de medicamentos teria levado o ex-presidente a cometer o ato.",
+ fonte:{veiculo:"Polícia Federal / STF",url:""}},
+
+{eixo:"brasil",tier:2,data:"2019 a 2022",
+ fato:"Dados do Inpe registraram forte elevação do desmatamento na Amazônia no mandato, em paralelo à redução de orçamento do Ibama e do ICMBio e à queda no número de autos de infração ambiental.",
+ defesa:"O governo contestou publicamente a metodologia do Inpe e atribuiu os dados a falhas técnicas.",
+ fonte:{veiculo:"Inpe — PRODES",url:""}},
+
+{eixo:"brasil",tier:2,data:"2019 a 2022",
+ fato:"O Fundo Amazônia ficou paralisado após o conflito com Noruega e Alemanha, interrompendo o principal canal de financiamento internacional ao combate ao desmatamento. O desgaste ambiental do país alimentou resistência europeia ao acordo Mercosul–União Europeia.",
+ defesa:"O governo alegou que os doadores tentavam interferir na soberania brasileira sobre a Amazônia.",
+ fonte:{veiculo:"BNDES / Ministério do Meio Ambiente",url:""}},
+
+{eixo:"brasil",tier:2,data:"2019 a 2021",
+ fato:"Sob Ernesto Araújo, o Itamaraty adotou orientação de alinhamento ideológico com a administração Donald Trump e atritos retóricos com a China, principal parceiro comercial do agronegócio brasileiro. Araújo deixou o cargo em março de 2021 sob pressão do Congresso.",
+ defesa:"O ex-chanceler sustentou que defendia soberania e valores nacionais.",
+ fonte:{veiculo:"Ministério das Relações Exteriores",url:""}},
+
+{eixo:"brasil",tier:2,data:"Julho de 2022",
+ destaque:"O Brasil voltou ao Mapa da Fome da ONU durante o mandato.",
+ fato:"Relatório da FAO e agências da ONU recolocou o Brasil no Mapa da Fome, com base em dados do período do mandato, após o país ter saído da lista em 2014.",
+ defesa:"O governo atribuiu o resultado aos efeitos globais da pandemia e da guerra na Ucrânia.",
+ fonte:{veiculo:"FAO — relatório SOFI 2022",url:""}},
+
+{eixo:"brasil",tier:2,data:"2019 a 2022",
+ fato:"O avanço do garimpo ilegal na Terra Indígena Yanomami levou o Ministério da Saúde a declarar emergência sanitária em janeiro de 2023, apontando desnutrição grave e colapso do atendimento de saúde na área durante o período anterior.",
+ defesa:"O ex-governo negou omissão e afirmou ter mantido operações de fiscalização na região.",
+ fonte:{veiculo:"Ministério da Saúde",url:""}},
+
+{eixo:"brasil",tier:2,data:"Julho de 2025",
+ destaque:"Os EUA impuseram tarifa de 50% a produtos brasileiros, citando o julgamento dele.",
+ fato:"O governo dos Estados Unidos impôs tarifa de 50% sobre produtos brasileiros, apresentando a medida como resposta ao processo judicial contra Bolsonaro. A PF apurou que o ex-presidente e o filho Eduardo procuraram autoridades americanas com o objetivo de obter sanções contra agentes públicos brasileiros.",
+ defesa:"Bolsonaro negou ter pedido sanções e afirmou que a decisão foi exclusiva do governo americano.",
+ fonte:{veiculo:"Casa Branca / Polícia Federal",url:""}},
+
+{eixo:"fiscal",tier:2,data:"Junho de 2022",
+ destaque:"Zerou o imposto dos combustíveis com validade que terminava em 31 de dezembro de 2022.",
+ fato:"A Lei Complementar 194 e a Lei 14.592 zeraram as alíquotas de PIS e Cofins sobre gasolina, diesel, gás de cozinha e etanol, com vigência fixada até 31 de dezembro de 2022 — exatamente o fim do ano eleitoral. A renúncia de receita não teve compensação permanente e a cobrança foi retomada no ano seguinte.",
+ defesa:"O governo sustentou que a medida respondia ao choque internacional de preços do petróleo.",
+ fonte:{veiculo:"Diário Oficial — LC 194/2022 e Lei 14.592/2022",url:""}},
+
+{eixo:"fiscal",tier:2,data:"Julho de 2022",
+ destaque:"Elevou o Auxílio Brasil a R$ 600 com prazo que se encerrava logo após a eleição.",
+ fato:"A Emenda Constitucional 123, aprovada a três meses da eleição, declarou estado de emergência para permitir a elevação do Auxílio Brasil a R$ 600 e a criação de novos benefícios, com vigência limitada a 31 de dezembro de 2022. A medida contornou as restrições da lei eleitoral à criação de benefícios em ano de pleito.",
+ defesa:"O governo sustentou que a emergência decorria da inflação de alimentos e combustíveis.",
+ fonte:{veiculo:"Diário Oficial — EC 123/2022",url:""}},
+
+{eixo:"fiscal",tier:2,data:"Março e abril de 2020",
+ fato:"A proposta inicial do governo para o auxílio emergencial durante a pandemia era de R$ 200 mensais. O valor foi elevado a R$ 600 por iniciativa do Congresso Nacional, contra a posição original da equipe econômica.",
+ defesa:"O governo alegou preocupação com o impacto fiscal e afirmou depois ter sido o responsável pelo programa.",
+ fonte:{veiculo:"Congresso Nacional — Lei 13.982/2020",url:""}},
+
+{eixo:"gestao",tier:2,data:"16 de janeiro de 2020",
+ destaque:"O secretário de Cultura gravou vídeo oficial reproduzindo trecho de discurso de Goebbels.",
+ fato:"Roberto Alvim, secretário especial da Cultura, divulgou vídeo institucional em que reproduziu trecho de discurso de Joseph Goebbels, ministro da propaganda nazista, com música de Wagner ao fundo. Foi exonerado no dia seguinte por ato publicado no Diário Oficial.",
+ defesa:"Alvim afirmou que a coincidência foi acidental e que não conhecia a origem do texto.",
+ fonte:{veiculo:"Vídeo oficial / Diário Oficial da União",url:""}},
+
+/* ===================== NÍVEL 3 — ACUSAÇÃO EM CURSO ===================== */
+{eixo:"corrupcao",tier:3,data:"Julho de 2024",
+ destaque:"Indiciado pela Polícia Federal por peculato e lavagem no caso das joias sauditas.",
+ fato:"A Polícia Federal indiciou Bolsonaro por peculato, lavagem de dinheiro e associação criminosa no caso dos presentes recebidos da Arábia Saudita, apurando tentativa de incorporação de bens do acervo público ao patrimônio privado.",
+ defesa:"A defesa nega irregularidades e sustenta que os bens eram presentes pessoais, não acervo da União.",
+ fonte:{veiculo:"Polícia Federal",url:""}},
+
+{eixo:"corrupcao",tier:3,data:"Fevereiro de 2024",
+ destaque:"Indiciado por uso da agência de inteligência do Estado para vigiar autoridades e adversários.",
+ fato:"A Polícia Federal indiciou Bolsonaro e outros investigados por envolvimento em esquema de monitoramento ilegal por meio da Abin, apontando uso da agência de inteligência de Estado para vigiar autoridades e produzir material contra adversários.",
+ defesa:"Bolsonaro nega participação e conhecimento do esquema.",
+ fonte:{veiculo:"Polícia Federal",url:""}},
+
+{eixo:"instituic",tier:3,data:"2025 e 2026",
+ fato:"A PGR sustenta que houve articulação junto ao governo dos Estados Unidos para impor sanções econômicas ao Brasil e restrições a ministros do STF, com o objetivo de pressionar o Judiciário no julgamento de Bolsonaro. O procurador-geral pediu condenação por coação no curso do processo.",
+ defesa:"Os acusados sustentam que se trata de manifestação política legítima e de relações com governo estrangeiro soberano.",
+ fonte:{veiculo:"PGR — alegações finais",url:""}},
+
+{eixo:"corrupcao",tier:3,data:"Junho de 2021",
+ fato:"O Ministério da Saúde suspendeu o contrato de compra de 20 milhões de doses da vacina Covaxin, de R$ 1,6 bilhão, intermediado pela empresa Precisa Medicamentos. Servidores relataram à CPI da Pandemia pressão atípica para acelerar a negociação, a preço por dose superior ao de outros imunizantes, e pedido de pagamento adiantado não previsto em contrato.",
+ defesa:"O governo negou irregularidade e afirmou que o contrato foi suspenso assim que surgiram as suspeitas.",
+ decisao:"O inquérito contra Bolsonaro por prevaricação foi arquivado pelo STF em abril de 2022, após a PF concluir pela inexistência do crime e a PGR pedir o arquivamento por insuficiência de elementos.",
+ fonte:{veiculo:"Senado Federal — CPI da Pandemia / Ministério da Saúde",url:""}},
+
+{eixo:"gestao",tier:3,data:"Junho de 2022",
+ fato:"Milton Ribeiro, ex-ministro da Educação, foi preso em investigação sobre suspeita de favorecimento na liberação de verbas do MEC a pastores sem cargo formal no governo.",
+ defesa:"Ribeiro negou irregularidades e foi solto no dia seguinte por decisão judicial.",
+ fonte:{veiculo:"Polícia Federal",url:""}},
+
+{eixo:"gestao",tier:3,data:"Outubro de 2021",
+ fato:"O relatório final da CPI da Pandemia pediu o indiciamento de Bolsonaro por nove crimes, entre eles charlatanismo e epidemia com resultado morte, apontando atraso na aquisição de vacinas e promoção de tratamento sem eficácia comprovada.",
+ defesa:"Bolsonaro classificou o relatório como peça política. Nem todas as conclusões resultaram em ação penal.",
+ fonte:{veiculo:"Senado Federal — relatório final da CPI",url:""}},
+
+{eixo:"gestao",tier:3,data:"2021",
+ fato:"A CPI da Pandemia apurou que ofertas de venda de vacinas feitas pela Pfizer ao governo brasileiro em 2020 ficaram meses sem resposta efetiva, atraso que a comissão classificou como determinante para o calendário de imunização do país.",
+ defesa:"O governo alegou que as condições contratuais exigidas pela fabricante eram inaceitáveis à época.",
+ fonte:{veiculo:"Senado Federal — CPI da Pandemia",url:""}},
+
+/* ===================== NÍVEL 4 — APURAÇÃO JORNALÍSTICA ===================== */
+{eixo:"corrupcao",tier:4,data:"Agosto de 2022",
+ fato:"Levantamento do UOL em escrituras de cartório apontou que, dos 107 imóveis negociados pelo então presidente, irmãos e filhos desde os anos 1990, ao menos 51 foram adquiridos total ou parcialmente com pagamento em espécie, somando R$ 13,5 milhões em valores da época.",
+ defesa:"Bolsonaro afirmou não haver nada de irregular nas compras.",
+ decisao:"O ministro André Mendonça rejeitou por duas vezes pedidos de investigação sobre o caso, apontando insuficiência de elementos mínimos, e a PGR defendeu o arquivamento.",
+ fonte:{veiculo:"UOL",url:""}},
+
+{eixo:"velha",tier:4,data:"2022",
+ fato:"Relatório da Transparência Internacional apontou que parlamentares com maior acesso aos recursos do orçamento secreto obtiveram vantagem eleitoral relevante em relação aos demais, indicando uso do mecanismo como instrumento de disputa eleitoral.",
+ defesa:"Parlamentares beneficiados sustentaram que as emendas atendiam demandas legítimas de suas bases.",
+ fonte:{veiculo:"Transparência Internacional Brasil",url:""}},
+
+{eixo:"instituic",tier:4,data:"2019 a 2022",
+ fato:"Entidades de classe do jornalismo registraram recordes sucessivos de casos de agressão, intimidação e descredibilização contra jornalistas no período, com parcela expressiva atribuída diretamente a declarações do presidente e de integrantes do governo.",
+ defesa:"O governo sustentou que criticar a imprensa é exercício legítimo da liberdade de expressão.",
+ fonte:{veiculo:"Fenaj / Abraji — relatórios anuais",url:""}}
+];
+
+/* ========================================================================== */
+const TIER={1:"Decisão definitiva",2:"Ato oficial ou gravação",3:"Acusação em curso",4:"Apuração jornalística"};
+let fEixo=null,fTier="all",fSort="tier";
+
+/* id estável derivado do texto do fato: não quebra se a ordem mudar */
+function slug(t){let h=5381;for(let n=0;n<t.length;n++)h=((h<<5)+h+t.charCodeAt(n))>>>0;return"r"+h.toString(36);}
+ITENS.forEach(i=>i.id=slug(i.fato));
+const EIXO_DE={};EIXOS.forEach(e=>EIXO_DE[e.id]=e);
+
+const eixosEl=document.getElementById("eixos");
+EIXOS.forEach(e=>{
+  const n=ITENS.filter(i=>i.eixo===e.id).length;
+  const b=document.createElement("button");
+  b.className="eixo";b.setAttribute("aria-pressed","false");b.dataset.eixo=e.id;
+  b.innerHTML=`<p class="n">${e.nome}</p><p class="qt">${n} ${n===1?"registro":"registros"}</p><p class="c">${e.contexto}</p><p class="p">${e.promessa}</p>`;
+  b.addEventListener("click",()=>{fEixo=(fEixo===e.id?null:e.id);paint();
+    document.querySelector(".arquivo").scrollIntoView({behavior:"smooth",block:"start"});});
+  eixosEl.appendChild(b);
+});
+
+function card(i){
+  const src=i.fonte.url
+    ? `${i.fonte.veiculo} — <a href="${i.fonte.url}" target="_blank" rel="noopener">abrir original</a>`
+    : `${i.fonte.veiculo} — <span class="pend">link do original pendente</span>`;
+  return `<article class="item" id="${i.id}">
+    <span class="date">${i.data}</span>
+    <p class="fato">${i.fato}</p>
+    ${i.defesa?`<p class="against"><b>O que a defesa alega:</b> ${i.defesa}</p>`:""}
+    ${i.decisao?`<p class="decisao"><b>Decisão favorável a ele:</b> ${i.decisao}</p>`:""}
+    <p class="src">${src}</p>
+    <div class="foot2">
+      <span class="tier t${i.tier}">${TIER[i.tier]}</span>
+      <button class="share" data-id="${i.id}">copiar link deste registro</button>
+    </div>
+  </article>`;
+}
+
+function paint(){
+  document.querySelectorAll(".eixo").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.eixo===fEixo)));
+  document.querySelectorAll("[data-tier]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.tier===fTier)));
+  document.querySelectorAll("[data-sort]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.sort===fSort)));
+
+  const sel=ITENS.filter(i=>(!fEixo||i.eixo===fEixo)&&(fTier==="all"||String(i.tier)===fTier));
+  const ordem=EIXOS.map(e=>e.id);
+  if(fSort==="tier")    sel.sort((a,b)=>a.tier-b.tier);
+  if(fSort==="crono")   sel.sort((a,b)=>ano(a.data)-ano(b.data));
+  if(fSort==="promessa")sel.sort((a,b)=>ordem.indexOf(a.eixo)-ordem.indexOf(b.eixo)||a.tier-b.tier);
+
+  let html="",ult=null;
+  sel.forEach(i=>{
+    if(fSort==="promessa"&&i.eixo!==ult){
+      ult=i.eixo;const e=EIXO_DE[i.eixo];
+      html+=`<div class="promessa-hd"><p class="q">${e.promessa}</p><p class="s">${e.contexto}</p></div>`;
+    }
+    html+=card(i);
+  });
+  document.getElementById("lista").innerHTML=sel.length?html
+    :`<p class="empty">Nenhum item neste recorte. Um filtro vazio também é informação: nem todo compromisso tem registro em todos os níveis de prova.</p>`;
+  document.getElementById("count").textContent=`${sel.length} de ${ITENS.length}`;
+  document.getElementById("bar-count").textContent=`${ITENS.length} itens documentados`;
+}
+const MESES={janeiro:1,fevereiro:2,"março":3,abril:4,maio:5,junho:6,julho:7,
+  agosto:8,setembro:9,outubro:10,novembro:11,dezembro:12};
+function ano(d){
+  const a=d.match(/(19|20)\d{2}/g); if(!a) return 0;
+  const y=+a[a.length-1];
+  let mes=0; for(const k in MESES){ const p=d.toLowerCase().lastIndexOf(k);
+    if(p>-1&&MESES[k]>mes&&a.length===1) mes=MESES[k]; }
+  if(a.length===1){ const primeiro=d.toLowerCase();
+    for(const k in MESES){ if(primeiro.indexOf(k)>-1){ mes=MESES[k]; break; } } }
+  let dia=0; const md=d.match(/^(\d{1,2})(º)? de /); if(md) dia=+md[1];
+  return y*10000+(mes||13)*100+dia;
+}
+
+document.querySelectorAll("[data-tier]").forEach(b=>b.addEventListener("click",()=>{fTier=b.dataset.tier;paint();}));
+document.querySelectorAll("[data-sort]").forEach(b=>b.addEventListener("click",()=>{fSort=b.dataset.sort;paint();}));
+
+document.getElementById("lista").addEventListener("click",ev=>{
+  const b=ev.target.closest(".share");if(!b)return;
+  const url=location.origin+location.pathname+"#"+b.dataset.id;
+  const ok=()=>{const t=b.textContent;b.textContent="link copiado";setTimeout(()=>b.textContent=t,1800);};
+  if(navigator.clipboard) navigator.clipboard.writeText(url).then(ok).catch(()=>prompt("Copie o link:",url));
+  else prompt("Copie o link:",url);
+});
+
+const DEST=ITENS.filter(i=>i.destaque);
+const stage=document.getElementById("stage"),dotsEl=document.getElementById("dots");
+let cur=0,timer=null;
+DEST.forEach((i,n)=>{
+  const s=document.createElement("div");
+  s.className="slide"+(n===0?" on":"");
+  s.innerHTML=`<h1>${i.destaque}</h1><p class="foot"><span class="lv">${TIER[i.tier]}</span>${i.data} · ${i.fonte.veiculo}</p>`;
+  stage.appendChild(s);
+  const d=document.createElement("button");
+  d.className="dot";d.type="button";
+  d.setAttribute("aria-label",`Ver registro ${n+1} de ${DEST.length}`);
+  d.setAttribute("aria-current",String(n===0));
+  d.addEventListener("click",()=>{go(n);restart();});
+  dotsEl.appendChild(d);
+  const li=document.createElement("li");li.textContent=i.destaque;
+  document.getElementById("staticlist").appendChild(li);
+});
+function go(n){
+  const s=stage.children,d=dotsEl.children;
+  s[cur].classList.remove("on");d[cur].setAttribute("aria-current","false");
+  cur=(n+DEST.length)%DEST.length;
+  s[cur].classList.add("on");d[cur].setAttribute("aria-current","true");
+}
+function restart(){clearInterval(timer);timer=setInterval(()=>go(cur+1),5200);}
+if(DEST.length>1&&!matchMedia("(prefers-reduced-motion: reduce)").matches){
+  restart();
+  stage.addEventListener("mouseenter",()=>clearInterval(timer));
+  stage.addEventListener("mouseleave",restart);
+  document.addEventListener("visibilitychange",()=>document.hidden?clearInterval(timer):restart());
+}
+paint();
+</script>
+</body>
+</html>
