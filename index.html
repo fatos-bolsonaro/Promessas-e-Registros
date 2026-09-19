@@ -112,6 +112,12 @@ footer{padding:36px 0 72px;font-size:14px;color:var(--soft)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}
   .stage,.dots{display:none}.staticlist{display:block;list-style:none;padding:0;margin:0}}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.grupo{border-left:3px solid var(--rule);padding-left:22px;margin:30px 0}
+.grupo .gt{font-family:var(--serif);font-weight:600;font-size:19px;margin:0}
+.grupo .gn{font-size:14px;color:var(--soft);margin:5px 0 4px}
+.grupo .gn b{color:var(--ink);font-weight:600}
+.grupo .item:last-child{border-bottom:0;padding-bottom:6px}
+@media (max-width:700px){.grupo{padding-left:14px}}
 </style>
 </head>
 <body>
@@ -206,101 +212,123 @@ const EIXOS = [
   {id:"brasil",    promessa:"“Defender o interesse nacional”", nome:"Imagem e interesse do país", contexto:"Prometeu recolocar o Brasil em posição forte no comércio e na diplomacia."}
 ];
 
+  const GRUPOS = {
+  sigilos:{titulo:"Os sigilos de cem anos",
+    nota:"Documentos de interesse público que foram classificados como sigilosos por 100 anos."}
+};
+  
 const ITENS = [
 
 /* ===================== NÍVEL 1 — DECISÃO DEFINITIVA ===================== */
 {eixo:"instituic",tier:1,data:"11 de setembro de 2025",
- fato:"A Primeira Turma do STF condenou Jair Bolsonaro a 27 anos e 3 meses de prisão por tentativa de golpe de Estado e outros quatro crimes. Em 25 de novembro de 2025 o processo transitou em julgado.",
+ fato:"Jair Bolsonaro é condenado a 27 anos e 3 meses de prisão por tentativa de golpe de Estado e outros quatro crimes.",
  defesa:"A defesa sustentou incompetência do STF para julgar o caso.",
- decisao:"No julgamento, o ministro Luiz Fux votou pela anulação do processo e contra a condenação.",
- fonte:{veiculo:"STF — AP 2668",url:""}},
-
-{eixo:"instituic",tier:1,data:"Dezembro de 2025",
- destaque:"O STF concluiu que a PRF bloqueou ônibus de eleitores no Nordeste no dia da votação.",
- fato:"O STF condenou Silvinei Vasques, ex-diretor-geral da Polícia Rodoviária Federal nomeado no governo, a 24 anos e 6 meses de prisão. A corte concluiu que ele usou a estrutura da PRF para coordenar blitzes e bloquear ônibus em regiões onde Lula tivera votação alta no primeiro turno, no dia do segundo turno de 2022.",
- defesa:"Vasques negou direcionamento e afirmou que a fiscalização seguiu o padrão de anos anteriores.",
- fonte:{veiculo:"STF",url:""}},
+ fonte:{veiculo:"BBC",url:"https://www.bbc.com/portuguese/articles/c9878ykw4rjo"}},
 
 {eixo:"instituic",tier:1,data:"30 de outubro de 2022",
- fato:"A investigação da PF apurou que, no dia do segundo turno, a PRF abordou 2,1 mil ônibus no Nordeste contra 571 no Sudeste, sem justificativa técnica para a diferença. A ordem do então presidente do TSE para suspender as operações foi descumprida.",
- defesa:"A direção da PRF alegou que a fiscalização foi proporcional e que ninguém deixou de votar em razão das operações.",
- fonte:{veiculo:"Polícia Federal / TSE",url:""}},
+ destaque:"PRF bloqueia ônibus de eleitores no Nordeste no dia da votação.",
+ fato:"PRF bloqueia ônibus de eleitores no Nordeste no dia da votação. A estrutura da PRF foi utilizada apara coordenar blitzes e bloquear ônibus em regiões onde Lula tivera votação alta no primeiro turno, no dia do segundo turno de 2022. À época, a ordem do então presidente do TSE para suspender as operações foi descumprida. O STF posteriormente condenaria Silvinei Vasques, ex-diretor-geral da Polícia Rodoviária Federal nomeado no governo Bolsonaro.",
+ defesa:"O ex-diretor0geral da PRF negou direcionamento e afirmou que a fiscalização seguiu o padrão de anos anteriores.",
+ fonte:{veiculo:"G1",url:"https://g1.globo.com/politica/eleicoes/2022/noticia/2022/10/30/prf-descumpre-ordem-do-tse-e-faz-pelo-menos-514-operacoes-de-fiscalizacao-contra-onibus-de-eleitores.ghtml"}},
 
 {eixo:"instituic",tier:1,data:"30 de junho de 2023",
  fato:"O TSE declarou Bolsonaro inelegível por oito anos, por abuso de poder político e uso indevido dos meios de comunicação na reunião em que questionou o sistema eleitoral diante de embaixadores estrangeiros.",
  defesa:"A defesa alegou que a reunião foi ato de governo, não propaganda eleitoral.",
- fonte:{veiculo:"TSE — AIJE 0600814-85.2022.6.00.0000",url:""}},
+ fonte:{veiculo:"TSE",url:"https://www.tse.jus.br/comunicacao/noticias/2023/Junho/por-maioria-de-votos-tse-declara-bolsonaro-inelegivel-por-8-anos"}},
 
-{eixo:"instituic",tier:1,data:"Outubro de 2023",
- fato:"O TSE declarou Bolsonaro e Walter Braga Netto inelegíveis também pelo uso eleitoral das comemorações do 7 de Setembro de 2022, entendendo ter havido abuso de poder político e econômico em evento oficial de Estado.",
- defesa:"",
- fonte:{veiculo:"TSE",url:""}},
-
-{eixo:"instituic",tier:1,data:"Maio de 2023",
- fato:"O STF declarou inconstitucional o indulto concedido por decreto ao deputado Daniel Silveira, condenado pela própria corte dias antes por ameaça a ministros e incitação à ruptura institucional. A corte entendeu que houve desvio de finalidade no uso do poder de graça.",
- defesa:"O governo sustentou que o indulto é prerrogativa discricionária do presidente da República.",
- fonte:{veiculo:"STF — ADIs 7154 e 7155",url:""}},
-
-{eixo:"velha",tier:1,data:"Dezembro de 2022",
- destaque:"O STF declarou inconstitucional o orçamento secreto, mecanismo que sustentou a base no Congresso.",
- fato:"O STF declarou inconstitucional o modelo de emendas de relator conhecido como orçamento secreto, por violar transparência e impessoalidade orçamentária. O mecanismo nasceu e se consolidou no governo como base da relação com o Centrão.",
+{eixo:"velha",tier:1,data:"19 de dezembro de 2022",
+ destaque:"O orçamento secreto é declarado inconstitucional, mecanismo que sustentou apoio do Governo Bolsonaro no Congresso.",
+ fato:"Foi declarado inconstitucional o modelo de emendas de relator conhecido como orçamento secreto, por violar transparência e impessoalidade orçamentária. O mecanismo nasceu e se consolidou no Governo Bolsonaro como base da relação com o Centrão.",
  defesa:"Aliados sustentaram que as emendas de relator eram forma legítima de participação do Congresso no orçamento.",
- fonte:{veiculo:"STF — ADPFs 850, 851, 854 e 1014",url:""}},
+ fonte:{veiculo:"STF — ADPFs 850, 851, 854 e 1014",url:"https://noticias.stf.jus.br/postsnoticias/stf-julga-orcamento-secreto-inconstitucional/"}},
 
 {eixo:"corrupcao",tier:1,data:"29 de abril de 2020",
- destaque:"O STF suspendeu a nomeação do amigo da família que ele indicou para a direção-geral da PF.",
- fato:"O STF suspendeu a nomeação de Alexandre Ramagem para a direção-geral da Polícia Federal, apontando indícios de desvio de finalidade no ato. Ramagem, então diretor da Abin e próximo da família presidencial, havia sido indicado dias após a saída de Sergio Moro.",
+ destaque:"Foi suspensa a nomeação do amigo da família que Bolsonaro indicou para a direção-geral da PF.",
+ fato:"Foi suspensa a nomeação de Alexandre Ramagem para a direção-geral da Polícia Federal, por indícios de desvio de finalidade no ato. Ramagem, então diretor da Abin e próximo da família Bolsonaro, havia sido indicado dias após a saída de Sergio Moro.",
  defesa:"O governo sustentou que a nomeação era prerrogativa exclusiva do presidente da República.",
- fonte:{veiculo:"STF — MS 37.097",url:""}},
+ fonte:{veiculo:"STF — MS 37.097",url:"https://noticias.stf.jus.br/postsnoticias/ministro-alexandre-de-moraes-suspende-nomeacao-de-alexandre-ramagem-para-o-comando-da-pf/"}},
 
-{eixo:"gestao",tier:1,data:"15 de abril de 2020",
- fato:"O STF decidiu que estados e municípios têm competência concorrente para adotar medidas sanitárias de isolamento e restrição, contrariando a posição do governo federal, que defendia centralizar a decisão na Presidência.",
- defesa:"O governo sustentou que a fragmentação de regras prejudicava a economia e a coordenação nacional.",
- fonte:{veiculo:"STF — ADI 6341",url:""}},
-
-{eixo:"instituic",tier:1,data:"2021 a 2023",
- fato:"Decisões do STF invalidaram parte dos decretos que flexibilizaram o acesso a armas e munições, por fragilizarem os sistemas de controle e rastreabilidade. Os registros de colecionadores, atiradores e caçadores atingiram pico histórico em 2022.",
+{eixo:"instituic",tier:1,data:"04 de julho de 2023",
+ fato:"Decretos presidenciais foram invalidados por fragilizarem os sistemas de rastreabilidade de armas de fogo.",
  defesa:"O governo sustentou que a flexibilização ampliava o direito à legítima defesa.",
- fonte:{veiculo:"STF / Exército Brasileiro",url:""}},
+ fonte:{veiculo:"STF / Exército Brasileiro",url:"https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=510073&ori=1"}},
 
 /* ===================== NÍVEL 2 — ATO OFICIAL OU GRAVAÇÃO ===================== */
 {eixo:"corrupcao",tier:2,data:"24 de abril de 2020",
- destaque:"O ministro que era sua principal fiança anticorrupção pediu demissão acusando-o de interferir na PF.",
- fato:"Bolsonaro exonerou Maurício Valeixo da direção-geral da Polícia Federal por ato publicado no Diário Oficial, contrariando o então ministro da Justiça. Sergio Moro pediu demissão no mesmo dia, acusando-o de tentar interferir politicamente na PF para obter acesso a informações de inteligência.",
+ destaque:"Sérgio Moro,sua principal fiança anticorrupção, pediu demissão acusando-o de interferir na PF.",
+ fato:"Bolsonaro exonerou Maurício Valeixo da direção-geral da Polícia Federal, contrariando o então ministro da Justiça. Sergio Moro pediu demissão no mesmo dia, acusando-o de tentar interferir politicamente na PF para obter acesso a informações de inteligência.",
  defesa:"Bolsonaro negou interferência e afirmou que a troca se deu por falta de interlocução com o diretor-geral.",
- fonte:{veiculo:"Diário Oficial da União",url:""}},
+ fonte:{veiculo:"G1",url:"https://g1.globo.com/politica/noticia/2020/04/24/moro-anuncia-demissao-do-ministerio-da-justica-e-deixa-o-governo-bolsonaro.ghtml"}},
+
+{eixo:"corrupcao",tier:2,grupo:"sigilos",data:"Abril de 2022",
+ fato:"O governo impôs sigilo de cem anos sobre o cartão de vacinação do presidente e sobre seus exames de anticorpos contra o coronavírus. Questionado publicamente sobre os sigilos, Bolsonaro respondeu: “Em 100 anos saberá”.",
+ defesa:"O governo alegou proteção de dados pessoais de saúde.",
+ fonte:{veiculo:"Ministério da Saúde / CGU",url:""}},
+
+{eixo:"corrupcao",tier:2,grupo:"sigilos",data:"2022",
+ destaque:"Fechou por cem anos o registro das 35 visitas ao Planalto de pastores investigados por corrupção no MEC.",
+ fato:"Foi imposto sigilo de cem anos ao registro de entrada e saída dos pastores Gilmar dos Santos e Arilton Moura no Palácio do Planalto. Após a repercussão, os dados foram divulgados e revelaram 35 visitas desde 2019. Ambos eram investigados pela Polícia Federal por tráfico de influência e pedido de propina na liberação de verbas do Ministério da Educação.",
+ defesa:"O governo alegou proteção da intimidade dos visitantes.",
+ fonte:{veiculo:"Secretaria-Geral da Presidência",url:""}},
+
+{eixo:"corrupcao",tier:2,grupo:"sigilos",data:"2022",
+ fato:"Foram classificadas por cem anos as informações do crachá de acesso ao Palácio do Planalto dos filhos do presidente, Carlos e Eduardo Bolsonaro, nenhum deles ocupante de cargo no Executivo federal.",
+ defesa:"O governo alegou razões de segurança e proteção de dados pessoais.",
+ fonte:{veiculo:"Secretaria-Geral da Presidência",url:""}},
+
+{eixo:"corrupcao",tier:2,grupo:"sigilos",data:"2021",
+ fato:"O processo interno do Exército contra o general Eduardo Pazuello, aberto por sua participação em ato político ao lado do presidente em maio de 2021, foi classificado com sigilo de cem anos. Pazuello não foi punido.",
+ defesa:"O Exército alegou que processos disciplinares internos têm caráter reservado.",
+ fonte:{veiculo:"Exército Brasileiro",url:""}},
+
+{eixo:"corrupcao",tier:2,grupo:"sigilos",data:"2022",
+ fato:"A Receita Federal impôs sigilo de cem anos aos documentos do processo sobre a rachadinha no gabinete do senador Flávio Bolsonaro, que até então estavam disponíveis publicamente.",
+ defesa:"A Receita alegou que os documentos continham informações pessoais e restringiu o acesso a agentes públicos e às partes envolvidas.",
+ fonte:{veiculo:"Receita Federal",url:""}},
+
+{eixo:"corrupcao",tier:2,grupo:"sigilos",data:"2021",
+ fato:"O Ministério da Saúde impôs sigilo aos contratos de aquisição da vacina Covaxin, acordo de R$ 1,6 bilhão então sob investigação da CPI da Pandemia por suspeita de irregularidade no preço e na intermediação.",
+ defesa:"O ministério alegou que a negociação ainda estava em curso.",
+ decisao:"A Justiça derrubou o sigilo em agosto de 2021.",
+ fonte:{veiculo:"Ministério da Saúde",url:""}},
+
+{eixo:"corrupcao",tier:2,grupo:"sigilos",data:"2022",
+ fato:"A Polícia Rodoviária Federal negou por cem anos o acesso aos procedimentos administrativos dos agentes envolvidos na morte de Genivaldo de Jesus Santos, asfixiado dentro do porta-malas de uma viatura durante abordagem em Sergipe.",
+ defesa:"A corporação alegou proteção da intimidade dos servidores envolvidos.",
+ decisao:"A própria PRF retirou o sigilo após a repercussão do caso.",
+ fonte:{veiculo:"Polícia Rodoviária Federal",url:""}},
 
 {eixo:"corrupcao",tier:2,data:"22 de abril de 2020",
- fato:"Em reunião ministerial gravada, cuja divulgação foi autorizada pelo STF, Bolsonaro declarou que trocaria pessoas na estrutura de segurança porque não podia ser surpreendido com notícias envolvendo pessoas próximas a ele.",
+ fato:"Em reunião ministerial gravada, Bolsonaro declarou que trocaria pessoas na estrutura de segurança porque não podia ser surpreendido com notícias envolvendo pessoas próximas a ele.",
  defesa:"A defesa sustentou que a fala tratava da segurança pessoal da família, não da Polícia Federal.",
- fonte:{veiculo:"Vídeo da reunião ministerial — STF",url:""}},
+ fonte:{veiculo:"G1 - Vídeo da reunião ministerial divulgado pelo STF",url:"https://g1.globo.com/politica/noticia/2020/05/22/em-reuniao-bolsonaro-diz-nao-posso-ser-surpreendido-com-noticias-po-eu-tenho-a-pf-que-nao-me-da-informacoes-assista.ghtml"}},
 
 {eixo:"brasil",tier:2,data:"22 de abril de 2020",
  destaque:"Em reunião gravada, o ministro do Meio Ambiente propôs usar a pandemia para “passar a boiada”.",
  fato:"Na mesma reunião gravada, o ministro do Meio Ambiente Ricardo Salles propôs aproveitar o foco da imprensa na pandemia para “ir passando a boiada” e flexibilizar normas infralegais de proteção ambiental.",
  defesa:"Salles afirmou que se referia a simplificação regulatória, não a afrouxamento da fiscalização.",
- fonte:{veiculo:"Vídeo da reunião ministerial — STF",url:""}},
+ fonte:{veiculo:"G1 - Vídeo da reunião ministerial divulgado pelo STF",url:"https://g1.globo.com/politica/noticia/2020/05/22/ministro-do-meio-ambiente-defende-passar-a-boiada-e-mudar-regramento-e-simplificar-normas.ghtml"}},
 
 {eixo:"instituic",tier:2,data:"22 de abril de 2020",
- fato:"Na mesma reunião gravada, o ministro da Educação Abraham Weintraub afirmou que prenderia os ministros do Supremo Tribunal Federal. Weintraub permaneceu no cargo por mais de um mês após a divulgação.",
+ fato:"Na mesma reunião gravada, o ministro da Educação Abraham Weintraub afirmou que gostaria de prender os ministros do STF.",
  defesa:"Weintraub disse depois que a fala foi desabafo pessoal e não posição de governo.",
- fonte:{veiculo:"Vídeo da reunião ministerial — STF",url:""}},
+ fonte:{veiculo:"G1 - Vídeo da reunião ministerial divulgado pelo STF",url:"https://g1.globo.com/politica/noticia/2020/05/22/eu-por-mim-botava-esses-vagabundos-todos-na-cadeia-comecando-no-stf-diz-ministro-da-educacao-em-reuniao.ghtml"}},
 
 {eixo:"instituic",tier:2,data:"29 de julho de 2021",
- fato:"Bolsonaro convocou transmissão nos canais oficiais da Presidência para apresentar alegações de fraude no sistema eleitoral. O TSE afirmou que nenhuma das alegações se sustentava e o episódio originou inquérito no Supremo.",
+ fato:"Bolsonaro convocou transmissão nos canais oficiais da Presidência para apresentar supostas alegações de fraude no sistema eleitoral admitindo não possuir provas.",
  defesa:"Bolsonaro sustentou que apenas levantava dúvidas legítimas sobre a auditabilidade do sistema.",
- fonte:{veiculo:"Transmissão oficial da Presidência",url:""}},
+ fonte:{veiculo:"G1 - Transmissão oficial da Presidência",url:"https://g1.globo.com/politica/noticia/2021/07/29/apos-tres-anos-falando-em-fraudes-eleitorais-bolsonaro-faz-live-com-noticias-falsas-e-admite-nao-ter-provas-das-acusacoes.ghtml"}},
 
 {eixo:"instituic",tier:2,data:"18 de julho de 2022",
  fato:"Bolsonaro reuniu embaixadores estrangeiros no Palácio da Alvorada para questionar o sistema eleitoral brasileiro. A reunião foi transmitida pela TV Brasil, emissora pública, com estrutura oficial do Estado.",
  defesa:"O governo sustentou que se tratava de esclarecimento institucional a corpo diplomático.",
- fonte:{veiculo:"TV Brasil / Planalto",url:""}},
+ fonte:{veiculo:"TV Brasil / Planalto",url:"https://tvbrasil.ebc.com.br/reporter-brasil-tarde/2026/08/tse-reune-embaixadores-e-explica-o-funcionamento-das-urnas-eletronicas"}},
 
 {eixo:"gestao",tier:2,data:"28 de abril de 2020",
  destaque:"Perguntado sobre o recorde de mortes por covid, respondeu “e daí? Quer que eu faça o quê?”.",
- fato:"Questionado por jornalistas sobre o recorde diário de mortes por covid-19, Bolsonaro respondeu em vídeo: “E daí? Lamento. Quer que eu faça o quê?”. O país viria a registrar mais de 690 mil mortes pela doença.",
+ fato:"Questionado por jornalistas sobre o recorde diário de mortes por covid-19, Bolsonaro respondeu em vídeo: “E daí? Quer que eu faça o quê?”. O país viria a registrar mais de 690 mil mortes pela doença.",
  defesa:"Bolsonaro afirmou depois que a frase foi tirada de contexto e que se referia à sua condição de não ser médico.",
- fonte:{veiculo:"Registro em vídeo — imprensa credenciada",url:""}},
+ fonte:{veiculo:"Valor Econômico - Registro em vídeo",url:"https://valor.globo.com/politica/noticia/2020/04/28/bolsonaro-fala-em-retomada-da-atividade-apos-reuniao-com-empresarios-da-firjan.ghtml"}},
 
 {eixo:"gestao",tier:2,data:"Julho de 2020",
  destaque:"Vetou a obrigatoriedade de máscara em comércio, escolas e templos. O Congresso derrubou.",
@@ -308,36 +336,30 @@ const ITENS = [
  defesa:"O governo alegou que a obrigatoriedade invadia a esfera privada e a autonomia individual.",
  fonte:{veiculo:"Diário Oficial — Lei 14.019/2020",url:""}},
 
-{eixo:"gestao",tier:2,data:"Outubro de 2021",
+{eixo:"gestao",tier:2,data:"07 de outubro de 2021",
  fato:"Bolsonaro vetou trechos da Lei 14.214/2021 que previam distribuição gratuita de absorventes a estudantes de baixa renda, pessoas em situação de rua e presas. O Congresso derrubou os vetos em 2022.",
  defesa:"O governo alegou ausência de indicação de fonte orçamentária para custear a medida.",
- fonte:{veiculo:"Diário Oficial — Lei 14.214/2021",url:""}},
+ fonte:{veiculo:"Diário Oficial da União",url:"https://www12.senado.leg.br/noticias/materias/2021/10/07/bolsonaro-veta-distribuicao-de-absorventes-a-estudantes-e-mulheres-pobres"}},
 
 {eixo:"gestao",tier:2,data:"2020 e 2021",
- fato:"O Ministério da Saúde teve quatro titulares durante a pandemia — Mandetta, Teich, Pazuello e Queiroga. Eduardo Pazuello, general do Exército sem formação médica, comandou a pasta na fase mais crítica da crise sanitária.",
+ fato:"O Ministério da Saúde teve quatro titulares durante a pandemia. Um deles era general do Exército sem formação médica, e comandou a pasta na fase mais crítica da crise sanitária.",
  defesa:"O governo sustentou que a gestão militar trouxe capacidade logística à pasta.",
- fonte:{veiculo:"Diário Oficial da União",url:""}},
+ fonte:{veiculo:"UOL",url:"https://noticias.uol.com.br/saude/ultimas-noticias/redacao/2021/03/15/mandetta-teich-pazuello-e-queiroga-os-4-ministros-da-saude-da-pandemia.htm"}},
 
 {eixo:"gestao",tier:2,data:"2020 e 2021",
  fato:"O governo promoveu publicamente cloroquina e o chamado tratamento precoce, sem comprovação científica de eficácia, incluindo produção do medicamento pelo laboratório do Exército e campanha oficial de divulgação.",
  defesa:"O governo defendeu o direito do médico à prescrição off-label e negou ter imposto qualquer tratamento.",
- fonte:{veiculo:"Ministério da Saúde",url:""}},
+ fonte:{veiculo:"Folha de São Paulo",url:"https://www1.folha.uol.com.br/poder/2021/04/entenda-como-o-governo-despejou-esforcos-com-cloroquina-e-outros-remedios-sem-eficacia-contra-covid.shtml"}},
 
-{eixo:"gestao",tier:2,data:"Dezembro de 2020",
+{eixo:"gestao",tier:2,data:"17 de dezembro de 2020",
  fato:"Em declarações públicas gravadas, Bolsonaro afirmou que não tomaria a vacina contra a covid-19 e desestimulou a imunização, em período em que o país negociava a compra de imunizantes.",
- defesa:"Bolsonaro afirmou tratar-se de escolha pessoal e que nunca proibiu ninguém de se vacinar.",
- fonte:{veiculo:"Pronunciamentos e transmissões oficiais",url:""}},
+ defesa:"Bolsonaro afirmou tratar-se de escolha pessoal.",
+ fonte:{veiculo:"TV Cultura - Pronunciamentos e transmissões oficiais",url:"https://cultura.uol.com.br/noticias/14942_bolsonaro-declara-que-nao-tomara-a-vacina-contra-a-covid-19-e-critica-quem-o-considera-como-mau-exemplo.html"}},
 
 {eixo:"instituic",tier:2,data:"23 de maio de 2021",
- fato:"O general Eduardo Pazuello, na ativa e então ministro da Saúde, participou de ato político ao lado de Bolsonaro no Rio de Janeiro, em desacordo com o regulamento disciplinar do Exército. Não foi punido.",
+ fato:"O general Eduardo Pazuello, na ativa e então ministro da Saúde, participou de ato político ao lado de Bolsonaro no Rio de Janeiro, em desacordo com o regulamento disciplinar do Exército. O processo disciplinar foi aberto porque militares da ativa não podem se manifestar politicamente",
  defesa:"O Exército concluiu que não houve transgressão disciplinar por se tratar de agenda ministerial.",
- fonte:{veiculo:"Ministério da Defesa / Exército Brasileiro",url:""}},
-
-{eixo:"corrupcao",tier:2,data:"2021 e 2022",
- destaque:"Impôs sigilo de cem anos sobre o próprio cartão de vacinação e o acesso de familiares ao Planalto.",
- fato:"O governo impôs sigilo de cem anos sobre documentos de interesse público, entre eles o cartão de vacinação do presidente e os registros de acesso de familiares ao Palácio do Planalto. Os sigilos foram posteriormente derrubados.",
- defesa:"O governo alegou proteção de dados pessoais e razões de segurança.",
- fonte:{veiculo:"CGU",url:""}},
+ fonte:{veiculo:"O Globo - Exército Brasileiro",url:"https://oglobo.globo.com/politica/noticia/2023/02/chefe-do-exercito-foi-comunicado-de-participacao-de-pazuello-em-ato-politico-com-bolsonaro-mostra-processo.ghtml"}},
 
 {eixo:"corrupcao",tier:2,data:"2019 a 2022",
  fato:"Os gastos do cartão corporativo da Presidência foram mantidos sob sigilo durante o mandato. Os dados, divulgados depois, apontaram dezenas de milhões de reais em despesas no período.",
@@ -460,6 +482,29 @@ const ITENS = [
  defesa:"Alvim afirmou que a coincidência foi acidental e que não conhecia a origem do texto.",
  fonte:{veiculo:"Vídeo oficial / Diário Oficial da União",url:""}},
 
+ {eixo:"corrupcao",tier:2,data:"27 de outubro de 2021",
+ destaque:"Com o microfone aberto sem saber, descreveu um método de propina e começou a falar no preço de uma vaga no STF.",
+ fato:"Durante o intervalo comercial de uma entrevista à Jovem Pan — cuja transmissão pela internet seguia no ar sem que ele soubesse — Bolsonaro descreveu em detalhe como se recebe dinheiro em espécie sem rastro: pede-se um sapato número 43 e “chega o sapato cheio de notinha de R$ 100 verdinha dentro”. Em seguida começou a perguntar quanto valeria uma vaga no Supremo Tribunal Federal e interrompeu a frase ao ser avisado de que estava ao vivo.",
+ defesa:"A fala foi feita em tom informal e atribuída por ele a práticas de terceiros no passado — “o cara que fazia contrato levava uma caixa de dinheiro embora” —, não a conduta própria.",
+ fonte:{veiculo:"Jovem Pan — transmissão ao vivo",url:""}},
+
+{eixo:"gestao",tier:2,data:"24 de março de 2020",
+ destaque:"Em pronunciamento oficial em cadeia nacional, chamou a covid-19 de “gripezinha”.",
+ fato:"Em pronunciamento oficial transmitido em cadeia nacional de rádio e televisão, Bolsonaro minimizou a gravidade da covid-19, afirmando que no seu caso não sentiria nada além de “uma gripezinha”, e criticou as medidas de isolamento adotadas por governadores e prefeitos.",
+ defesa:"Bolsonaro afirmou depois que se referia ao próprio histórico de saúde e que sua preocupação era com o impacto econômico do fechamento.",
+ fonte:{veiculo:"Pronunciamento oficial — cadeia nacional",url:""}},
+
+{eixo:"gestao",tier:2,data:"Junho de 2021",
+ fato:"Em evento público registrado em vídeo, Bolsonaro imitou uma pessoa com falta de ar ao comentar os efeitos da covid-19, gesto feito enquanto o país registrava média diária de milhares de mortes pela doença.",
+ defesa:"O governo afirmou que o gesto se referia à dificuldade respiratória causada pelo uso prolongado de máscara.",
+ fonte:{veiculo:"Registro em vídeo — imprensa credenciada",url:""}},
+
+{eixo:"gestao",tier:2,data:"Outubro de 2021",
+ destaque:"Afirmou em transmissão oficial que vacinados estariam desenvolvendo aids. Plataformas removeram o vídeo.",
+ fato:"Em transmissão semanal nas redes oficiais, Bolsonaro afirmou que pessoas totalmente vacinadas contra a covid-19 estariam desenvolvendo aids. A alegação não tem base científica. Facebook, Instagram e YouTube removeram o conteúdo por violar políticas de desinformação sobre saúde, e o episódio originou pedido de investigação no Supremo.",
+ defesa:"Bolsonaro afirmou ter apenas mencionado um suposto relatório estrangeiro e negou ter feito afirmação própria.",
+ fonte:{veiculo:"Transmissão oficial / plataformas",url:""}},
+
 /* ===================== NÍVEL 3 — ACUSAÇÃO EM CURSO ===================== */
 {eixo:"corrupcao",tier:3,data:"Julho de 2024",
  destaque:"Indiciado pela Polícia Federal por peculato e lavagem no caso das joias sauditas.",
@@ -467,16 +512,24 @@ const ITENS = [
  defesa:"A defesa nega irregularidades e sustenta que os bens eram presentes pessoais, não acervo da União.",
  fonte:{veiculo:"Polícia Federal",url:""}},
 
+{eixo:"corrupcao",tier:3,data:"Março de 2024",
+ fato:"A Polícia Federal indiciou Bolsonaro, Mauro Cid e outras 15 pessoas por associação criminosa e inserção de dados falsos em sistema de informações. A apuração indicou que dados falsos de vacinação contra a covid-19 do então presidente e de sua filha foram inseridos e depois excluídos dos registros oficiais do Ministério da Saúde, no período em que ele precisaria de comprovante para viajar aos Estados Unidos.",
+ defesa:"Bolsonaro negou ter ordenado ou tido conhecimento da inserção dos dados.",
+ decisao:"Em 28 de março de 2025, Moraes acolheu manifestação da PGR e arquivou a investigação contra Bolsonaro, por a acusação se apoiar apenas na delação premiada de Mauro Cid, sem provas independentes que a corroborassem — exigência legal para o recebimento de denúncia.",
+ fonte:{veiculo:"Polícia Federal / STF — Pet 10405",url:""}},
+
 {eixo:"corrupcao",tier:3,data:"Fevereiro de 2024",
  destaque:"Indiciado por uso da agência de inteligência do Estado para vigiar autoridades e adversários.",
  fato:"A Polícia Federal indiciou Bolsonaro e outros investigados por envolvimento em esquema de monitoramento ilegal por meio da Abin, apontando uso da agência de inteligência de Estado para vigiar autoridades e produzir material contra adversários.",
  defesa:"Bolsonaro nega participação e conhecimento do esquema.",
  fonte:{veiculo:"Polícia Federal",url:""}},
 
-{eixo:"instituic",tier:3,data:"2025 e 2026",
- fato:"A PGR sustenta que houve articulação junto ao governo dos Estados Unidos para impor sanções econômicas ao Brasil e restrições a ministros do STF, com o objetivo de pressionar o Judiciário no julgamento de Bolsonaro. O procurador-geral pediu condenação por coação no curso do processo.",
- defesa:"Os acusados sustentam que se trata de manifestação política legítima e de relações com governo estrangeiro soberano.",
- fonte:{veiculo:"PGR — alegações finais",url:""}},
+{eixo:"brasil",tier:3,data:"Junho e setembro de 2026",
+ destaque:"Um filho dele foi condenado por pressionar o STF articulando, nos EUA, sanções econômicas contra o Brasil.",
+ fato:"A Primeira Turma do STF condenou o ex-deputado Eduardo Bolsonaro a 4 anos e 2 meses de prisão, em regime inicial semiaberto, por coação no curso do processo. A corte concluiu que ele usou sua condição de parlamentar para articular junto a autoridades norte-americanas sanções contra ministros do Supremo e medidas econômicas contra o Brasil, com o objetivo de constranger o tribunal durante o julgamento do pai. O relator reconheceu ao menos nove episódios da prática, e a condenação foi unânime. Em setembro de 2026 a Turma rejeitou os embargos de declaração da defesa e manteve a sentença.",
+ defesa:"A Defensoria Pública da União sustentou que não houve ameaça grave suficiente para configurar o crime e que a atuação no exterior estava protegida pela liberdade de expressão e pela imunidade parlamentar.",
+ decisao:"A condenação ainda não transitou em julgado: cabem novos recursos antes da execução da pena.",
+ fonte:{veiculo:"STF — AP 2782-DF",url:"https://portal.stf.jus.br/processos/detalhe.asp?incidente=7505277"}},
 
 {eixo:"corrupcao",tier:3,data:"Junho de 2021",
  fato:"O Ministério da Saúde suspendeu o contrato de compra de 20 milhões de doses da vacina Covaxin, de R$ 1,6 bilhão, intermediado pela empresa Precisa Medicamentos. Servidores relataram à CPI da Pandemia pressão atípica para acelerar a negociação, a preço por dose superior ao de outros imunizantes, e pedido de pagamento adiantado não previsto em contrato.",
@@ -498,6 +551,7 @@ const ITENS = [
  fato:"A CPI da Pandemia apurou que ofertas de venda de vacinas feitas pela Pfizer ao governo brasileiro em 2020 ficaram meses sem resposta efetiva, atraso que a comissão classificou como determinante para o calendário de imunização do país.",
  defesa:"O governo alegou que as condições contratuais exigidas pela fabricante eram inaceitáveis à época.",
  fonte:{veiculo:"Senado Federal — CPI da Pandemia",url:""}},
+  
 
 /* ===================== NÍVEL 4 — APURAÇÃO JORNALÍSTICA ===================== */
 {eixo:"corrupcao",tier:4,data:"Agosto de 2022",
@@ -565,12 +619,26 @@ function paint(){
   if(fSort==="crono")   sel.sort((a,b)=>ano(a.data)-ano(b.data));
   if(fSort==="promessa")sel.sort((a,b)=>ordem.indexOf(a.eixo)-ordem.indexOf(b.eixo)||a.tier-b.tier);
 
-  let html="",ult=null;
+  let html="",ultEixo=null;const feitos=new Set();
   sel.forEach(i=>{
-    if(fSort==="promessa"&&i.eixo!==ult){
-      ult=i.eixo;const e=EIXO_DE[i.eixo];
+    if(feitos.has(i)) return;
+    if(fSort==="promessa"&&i.eixo!==ultEixo){
+      ultEixo=i.eixo;const e=EIXO_DE[i.eixo];
       html+=`<div class="promessa-hd"><p class="q">${e.promessa}</p><p class="s">${e.contexto}</p></div>`;
     }
+    if(i.grupo&&GRUPOS[i.grupo]){
+      const membros=sel.filter(x=>x.grupo===i.grupo);
+      const g=GRUPOS[i.grupo];
+      html+=`<div class="grupo"><p class="gt">${g.titulo}</p>
+        <p class="gn">${g.nota} <b>${membros.length} ${membros.length===1?"registro":"registros"}.</b></p>
+        ${membros.map(m=>{feitos.add(m);return card(m);}).join("")}</div>`;
+    } else { html+=card(i); }
+  });
+  document.getElementById("lista").innerHTML=sel.length?html
+    :`<p class="empty">Nenhum item neste recorte. Um filtro vazio também é informação: nem todo compromisso tem registro em todos os níveis de prova.</p>`;
+  document.getElementById("count").textContent=`${sel.length} de ${ITENS.length}`;
+  document.getElementById("bar-count").textContent=`${ITENS.length} itens documentados`;
+}
     html+=card(i);
   });
   document.getElementById("lista").innerHTML=sel.length?html
