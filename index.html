@@ -639,13 +639,6 @@ function paint(){
   document.getElementById("count").textContent=`${sel.length} de ${ITENS.length}`;
   document.getElementById("bar-count").textContent=`${ITENS.length} itens documentados`;
 }
-    html+=card(i);
-  });
-  document.getElementById("lista").innerHTML=sel.length?html
-    :`<p class="empty">Nenhum item neste recorte. Um filtro vazio também é informação: nem todo compromisso tem registro em todos os níveis de prova.</p>`;
-  document.getElementById("count").textContent=`${sel.length} de ${ITENS.length}`;
-  document.getElementById("bar-count").textContent=`${ITENS.length} itens documentados`;
-}
 const MESES={janeiro:1,fevereiro:2,"março":3,abril:4,maio:5,junho:6,julho:7,
   agosto:8,setembro:9,outubro:10,novembro:11,dezembro:12};
 function ano(d){
