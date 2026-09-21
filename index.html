@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Promessa e Registro</title>
+<title>Promessas e Registros</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -53,7 +53,7 @@ h1,h2{font-family:var(--serif);letter-spacing:-.015em;font-weight:600;margin:0}
 .cont .caveat{font-size:14.5px;border-left:3px solid var(--accent);padding-left:14px;margin-top:20px}
 
 .eixos{padding:60px 0 8px}
-.sub{color:var(--soft);font-size:16px;margin:8px 0 26px;max-width:62ch}
+.sub{color:var(--soft);font-size:16px;margin:8px 0 26px;max-width:none}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
 .eixo{background:var(--paper);padding:22px;text-align:left;border:0;font:inherit;color:inherit;cursor:pointer;transition:background .12s;display:flex;flex-direction:column}
 .eixo:hover{background:var(--panel)}
@@ -94,14 +94,16 @@ h1,h2{font-family:var(--serif);letter-spacing:-.015em;font-weight:600;margin:0}
 .objecao p{color:var(--soft);max-width:64ch;font-size:16.5px;margin:0 0 12px}
 .objecao p:last-child{margin-bottom:0}
 .date{font-size:13.5px;color:var(--soft);display:block;margin-bottom:10px}
-.fato{font-size:18px;line-height:1.62;margin:0;max-width:64ch;letter-spacing:-.003em}
-.against{margin:15px 0 0;padding:11px 14px;border-left:3px solid var(--amber);
-  background:var(--amber-tint);font-size:14.5px;color:var(--soft);max-width:64ch;border-radius:0 3px 3px 0}
-.against b{font-family:var(--serif);font-style:italic;font-weight:600;color:var(--amber)}
-.decisao{margin:11px 0 0;padding:11px 14px;border-left:3px solid var(--accent);
-  background:var(--accent-tint);font-size:14.5px;max-width:66ch;border-radius:0 3px 3px 0}
-.decisao b{font-family:var(--serif);font-style:italic;font-weight:600;color:var(--accent)}
-.src{margin:15px 0 0;font-size:13.5px;color:var(--soft)}
+.titulo{font-family:var(--serif);font-weight:600;font-size:22.5px;line-height:1.28;
+  margin:0 0 9px;color:var(--ink);max-width:72ch}
+.fato{font-size:15.5px;line-height:1.62;margin:0;max-width:72ch;letter-spacing:-.003em;color:var(--soft)}
+.against{margin:14px 0 0;padding:1px 0 1px 13px;border-left:2px solid var(--amber);
+  font-size:13.5px;line-height:1.55;color:var(--soft);max-width:70ch}
+.against b{font-weight:600;color:var(--amber)}
+.decisao{margin:10px 0 0;padding:1px 0 1px 13px;border-left:2px solid var(--accent);
+  font-size:13.5px;line-height:1.55;color:var(--soft);max-width:70ch}
+.decisao b{font-weight:600;color:var(--accent)}
+.src{margin:15px 0 0;font-size:12.5px;color:var(--soft)}
 .src a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
 .pend{color:var(--amber);border:1px dashed currentColor;padding:1px 8px;border-radius:3px;font-size:12.5px}
 .tier{display:inline-block;margin-top:9px;font-size:12px;padding:3px 10px;border-radius:99px;border:1px solid}
@@ -121,7 +123,7 @@ footer{padding:36px 0 72px;font-size:14px;color:var(--soft)}
 .sign{border:1px dashed var(--rule);padding:17px 19px;border-radius:4px;max-width:58ch}
 @media (max-width:900px){.herogrid{grid-template-columns:1fr;gap:40px}.grid{grid-template-columns:1fr 1fr}.lede{max-width:60ch}}
 @media (max-width:700px){body{font-size:16px}.wrap{padding:0 20px}.hero{padding:48px 0 44px}
-  .stage{min-height:250px}.grid{grid-template-columns:1fr}.fato{font-size:17px}
+  .stage{min-height:250px}.grid{grid-template-columns:1fr}.titulo{font-size:19.5px;max-width:none}.fato{font-size:15px;max-width:none}
   .tiers div{grid-template-columns:1fr;gap:3px}.count{margin-left:0;width:100%}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}
   .stage,.dots{display:none}.staticlist{display:block;list-style:none;padding:0;margin:0}}
@@ -133,7 +135,7 @@ footer{padding:36px 0 72px;font-size:14px;color:var(--soft)}
 .grupo .item:last-child{border-bottom:0;padding-bottom:6px}
 @media (max-width:700px){.grupo{padding-left:14px}}
   .preocupa{background:var(--panel);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:52px 0}
-.preocupa h2{font-size:clamp(21px,2.6vw,27px);max-width:24ch}
+.preocupa h2{font-size:clamp(21px,2.6vw,27px);max-width:none}
 .preocupa .sub{margin:10px 0 22px}
 .pgrid{display:grid;grid-template-columns:270px 1fr;gap:40px;align-items:start;margin-top:10px}
 .pcol{position:sticky;top:20px}
@@ -203,6 +205,7 @@ footer{padding:36px 0 72px;font-size:14px;color:var(--soft)}
 
 <section class="arquivo"><div class="wrap">
   <h2>Registro</h2>
+  <p class="sub">Escolha uma promessa para ver as ações relacionadas a ela, ou veja todas as ocorrências em ordem cronológica.</p>
   <div class="controls">
     <button class="chip" data-eixo="" aria-pressed="true">Todas</button>
     <span id="eixos"></span>
@@ -246,9 +249,7 @@ footer{padding:36px 0 72px;font-size:14px;color:var(--soft)}
 </div></section>
 
 <footer><div class="wrap"><div class="sign">
-  <strong style="color:var(--ink)">Responsável por esta página</strong><br>
-  [seu nome completo] — [seu e-mail]<br>
-  <span style="font-size:13px">Página sem patrocínio e sem impulsionamento pago.</span>
+  <span style="font-size:13px">Página sem patrocínio e sem impulsionamento pago. Apenas um agregador de registros.</span>
 </div></div></footer>
 
 <script>
@@ -279,382 +280,432 @@ const ITENS = [
 
 /* ===================== NÍVEL 1 — DECISÃO DEFINITIVA ===================== */
 {eixo:"instituic",tier:1,data:"11 de setembro de 2025",
+ titulo:"Bolsonaro foi condenado a 27 anos e 3 meses por tentativa de golpe de Estado",
  fato:"Jair Bolsonaro foi condenado a 27 anos e 3 meses de prisão por tentativa de golpe de Estado e outros quatro crimes. O processo transitou em julgado em 25 de novembro de 2025.",
  defesa:"A defesa sustentou incompetência do STF para julgar o caso.",
  fonte:{veiculo:"BBC",url:"https://www.bbc.com/portuguese/articles/c9878ykw4rjo"}},
 
 {eixo:"instituic",tier:1,data:"30 de outubro de 2022",
- destaque:"A PRF bloqueou ônibus de eleitores no Nordeste no dia da votação.",
+ destaque:"A PRF bloqueou ônibus de eleitores no Nordeste no dia da votação",
  fato:"PRF bloqueia ônibus de eleitores no Nordeste no dia da votação. A estrutura da PRF foi utilizada para coordenar blitzes e bloquear ônibus em regiões onde Lula tivera votação alta no primeiro turno, no dia do segundo turno de 2022. À época, a ordem do então presidente do TSE para suspender as operações foi descumprida. O STF posteriormente condenaria Silvinei Vasques, ex-diretor-geral da Polícia Rodoviária Federal nomeado no governo Bolsonaro.",
  defesa:"O ex-diretor-geral da PRF negou direcionamento e afirmou que a fiscalização seguiu o padrão de anos anteriores.",
  fonte:{veiculo:"G1",url:"https://g1.globo.com/politica/eleicoes/2022/noticia/2022/10/30/prf-descumpre-ordem-do-tse-e-faz-pelo-menos-514-operacoes-de-fiscalizacao-contra-onibus-de-eleitores.ghtml"}},
 
 {eixo:"instituic",tier:1,data:"30 de junho de 2023",
+ titulo:"Bolsonaro foi declarado inelegível por oito anos pelo TSE",
  fato:"O TSE declarou Bolsonaro inelegível por oito anos, por abuso de poder político e uso indevido dos meios de comunicação na reunião em que questionou o sistema eleitoral diante de embaixadores estrangeiros.",
  defesa:"A defesa alegou que a reunião foi ato de governo, não propaganda eleitoral.",
  fonte:{veiculo:"TSE",url:"https://www.tse.jus.br/comunicacao/noticias/2023/Junho/por-maioria-de-votos-tse-declara-bolsonaro-inelegivel-por-8-anos"}},
 
 {eixo:"velha",tier:1,data:"19 de dezembro de 2022",
- destaque:"O orçamento secreto foi declarado inconstitucional; o mecanismo sustentava o apoio ao governo no Congresso.",
+ destaque:"Orçamento secreto, que sustentava o apoio ao governo no Congresso, foi declarado inconstitucional",
  fato:"Foi declarado inconstitucional o modelo de emendas de relator conhecido como orçamento secreto, por violar transparência e impessoalidade orçamentária. O mecanismo nasceu e se consolidou no governo Bolsonaro como base da relação com o Centrão.",
  defesa:"Aliados sustentaram que as emendas de relator eram forma legítima de participação do Congresso no orçamento.",
  fonte:{veiculo:"STF — ADPFs 850, 851, 854 e 1014",url:"https://noticias.stf.jus.br/postsnoticias/stf-julga-orcamento-secreto-inconstitucional/"}},
 
 {eixo:"corrupcao",tier:1,data:"29 de abril de 2020",
- destaque:"Foi suspensa a nomeação do amigo da família que Bolsonaro indicou para a direção-geral da PF.",
+ destaque:"Foi suspensa a nomeação do amigo da família que Bolsonaro indicou para a direção-geral da PF",
  fato:"Foi suspensa a nomeação de Alexandre Ramagem para a direção-geral da Polícia Federal, por indícios de desvio de finalidade no ato. Ramagem, então diretor da Abin e próximo da família Bolsonaro, havia sido indicado dias após a saída de Sergio Moro.",
  defesa:"O governo sustentou que a nomeação era prerrogativa exclusiva do presidente da República.",
  fonte:{veiculo:"STF — MS 37.097",url:"https://noticias.stf.jus.br/postsnoticias/ministro-alexandre-de-moraes-suspende-nomeacao-de-alexandre-ramagem-para-o-comando-da-pf/"}},
 
 {eixo:"instituic",tier:1,data:"04 de julho de 2023",
- fato:"Decretos presidenciais foram invalidados por fragilizarem os sistemas de rastreabilidade de armas de fogo.",
+ titulo:"Decretos de Bolsonaro sobre armas de fogo foram invalidados por fragilizar a rastreabilidade",
+ fato:"Por unanimidade, o Plenário do STF invalidou vários dispositivos de decretos assinados por Bolsonaro que flexibilizavam a aquisição, o cadastro, o registro, a posse, o porte e a comercialização de armas de fogo e de munição. Entre as alterações consideradas inconstitucionais estão o critério da necessidade e a ampliação do número de armas que podem ser adquiridas pelos CAC.",
  defesa:"O governo sustentou que a flexibilização ampliava o direito à legítima defesa.",
  fonte:{veiculo:"STF / Exército Brasileiro",url:"https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=510073&ori=1"}},
 
  {eixo:"fiscal",tier:1,data:"01 de dezembro de 2023",
- destaque:"O governo Bolsonaro fechou em superávit devido à PEC do Calote, que empurrou dívidas para o governo seguinte.",
+ destaque:"PEC do Calote empurrou dívidas judiciais; governo fechou em superávit no mesmo ano",
  fato:"Foi declarado inconstitucional o teto anual para pagamento de precatórios criado pelas Emendas Constitucionais 113 e 114 de 2021, apelidadas pela OAB de “PEC do Calote”. O mecanismo limitava o pagamento de dívidas empurrando o restante para exercícios futuros. Por este e outros motivos, em 2022, primeiro ano de vigência do limite, o governo federal registrou superávit primário pela primeira vez desde 2013.",
  defesa:"O governo sustentou que o novo regime era necessário para manter o teto de gastos e preservar espaço orçamentário para despesas da pandemia.",
  decisao:"O relator, ministro Luiz Fux, reconheceu que a imposição dos limites em 2021 se justificava pela necessidade de ações de saúde e assistência social durante a pandemia, e restringiu os efeitos do dispositivo ao exercício de 2022. O ministro André Mendonça ficou parcialmente vencido.",
  fonte:{veiculo:"STF — ADIs 7064 e 7047",url:"https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=521218&tip=UN"}},
 
  {eixo:"instituic",tier:1,data:"19 de novembro de 2024",
- destaque:"Documento impresso na sede da Presidência descrevia plano para assassinar três grandes autoridades da República",
+ destaque:"Documento impresso na Presidência descrevia plano para assassinar Lula e Moraes",
  fato:"O general Mário Fernandes, então secretário executivo da Secretaria-Geral da Presidência da República, elaborou o documento conhecido como “Punhal Verde e Amarelo”, que detalhava a execução do presidente eleito Luiz Inácio Lula da Silva, do vice-presidente eleito Geraldo Alckmin e do ministro Alexandre de Moraes. O plano indicava 15 de dezembro de 2022 como data de execução, três dias após a diplomação, e descrevia métodos que incluíam envenenamento e uso de armamento de guerra. O documento foi impresso no Palácio do Planalto. Militares das Forças Especiais do Exército monitoravam a rotina de Moraes em grupo de mensagens criado para esse fim.",
  defesa:"Fernandes admitiu a autoria em interrogatório, mas afirmou tratar-se de um “pensamento digitalizado” que nunca foi apresentado nem compartilhado com ninguém, e negou finalidade homicida, sustentando que pretendia apenas “neutralizar” as autoridades.",
  fonte:{veiculo:"Folha de São Paulo - STF",url:"https://www1.folha.uol.com.br/poder/2024/11/plano-para-matar-moraes-previa-como-aceitavel-morte-dos-autores-e-uso-de-arsenal-de-guerra-diz-pf.shtml"}},
 
 /* ===================== NÍVEL 2 — ATO OFICIAL OU GRAVAÇÃO ===================== */
 {eixo:"corrupcao",tier:2,data:"24 de abril de 2020",
- destaque:"Sergio Moro, sua principal fiança anticorrupção, pediu demissão acusando-o de interferir na PF.",
+ destaque:"Sergio Moro, sua principal fiança anticorrupção, pediu demissão acusando Bolsonaro de interferir na PF",
  fato:"Bolsonaro exonerou Maurício Valeixo da direção-geral da Polícia Federal, contrariando o então ministro da Justiça. Sergio Moro pediu demissão no mesmo dia, acusando-o de tentar interferir politicamente na PF para obter acesso a informações de inteligência.",
  defesa:"Bolsonaro negou interferência e afirmou que a troca se deu por falta de interlocução com o diretor-geral.",
  fonte:{veiculo:"G1 - Anúncio Oficial",url:"https://g1.globo.com/politica/noticia/2020/04/24/moro-anuncia-demissao-do-ministerio-da-justica-e-deixa-o-governo-bolsonaro.ghtml"}},
 
  {eixo:"fiscal",tier:2,data:"02 de março de 2022",
- destaque:"O governo zerou o imposto sobre jet skis, balões e dirigíveis.",
+ destaque:"O governo Bolsonaro zerou o imposto sobre jet skis, balões e dirigíveis",
  fato:"A governo reduziu de 18% para zero o imposto de importação de jet skis, por portaria publicada no Diário Oficial e em vigor desde 12 de março de 2022. O mesmo ato zerou a tarifa de importação de balões, dirigíveis e planadores. A decisão foi anunciada em meio a críticas às aparições de Bolsonaro em passeios de moto aquática durante as enchentes na Bahia.",
  defesa:"O governo sustentou que a medida estimularia o turismo náutico e que a redução para itens aeronáuticos seguia o acordo sobre comércio de aeronaves da Organização Mundial do Comércio.",
  fonte:{veiculo:"UOL - Ministério do Turismo",url:"https://economia.uol.com.br/noticias/reuters/2022/03/02/governo-zera-imposto-de-importacao-sobre-jet-ski-balao-e-dirigivel.htm"}},
 
 {eixo:"instituic",tier:2,data:"outubro de 2022 a janeiro de 2023",
+ titulo:"Acampamentos em frente a quartéis pediram intervenção militar por dois meses",
  fato:"A partir do dia seguinte ao segundo turno, formaram-se acampamentos em frente a quartéis do Exército em várias capitais, com pedidos explícitos de intervenção militar e de desconhecimento do resultado eleitoral. As estruturas permaneceram por mais de dois meses sem que o comando militar as removesse, e em alguns casos com apoio logístico de unidades das Forças Armadas. Foram desmontadas apenas por determinação judicial, após os atos de 8 de janeiro de 2023, que partiram do acampamento montado em Brasília.",
  defesa:"O Exército tratou a permanência dos acampamentos como exercício do direito de manifestação. Bolsonaro afirmou não ter convocado nem organizado os atos.",
  fonte:{veiculo:"Rádio Senado",url:"https://www12.senado.leg.br/radio/1/noticia/2023/09/14/general-confirma-que-exercito-impediu-o-desmonte-de-acampamentos-de-apoiadores-de-bolsonaro-por-falta-de-ordem-judicial"}},
 
 {eixo:"corrupcao",tier:2,grupo:"sigilos",data:"05 de novembro de 2021",
+ titulo:"Sigilo de cem anos sobre o próprio cartão de vacinação",
  fato:"Bolsonaro impôs sigilo de cem anos sobre seu cartão de vacinação e sobre seus exames de anticorpos contra o coronavírus. Questionado publicamente sobre os sigilos, Bolsonaro respondeu: “Em 100 anos saberá”.",
  defesa:"O governo alegou proteção de dados pessoais de saúde.",
  fonte:{veiculo:"TV Cultura - Ministério da Saúde",url:"https://cultura.uol.com.br/noticias/43774_palacio-do-planalto-estabelece-100-anos-de-sigilos-a-exames-de-anticorpos-de-bolsonaro.html"}},
 
 {eixo:"corrupcao",tier:2,grupo:"sigilos",data:"30 de junho de 2022",
- destaque:"Bolsonaro decretou sigilo de cem anos ao histórico de visitas de pastores investigados por corrupção no MEC.",
+ destaque:"Sigilo de cem anos sobre visitas de pastores investigados por corrupção no MEC",
  fato:"Bolsonaro impôs sigilo de cem anos ao registro de entrada e saída, no Palácio do Planalto, de dois pastores investigados por corrupção no MEC. Após a repercussão, os dados foram divulgados e revelaram 35 visitas desde 2019. Ambos eram investigados pela Polícia Federal por tráfico de influência e pedido de propina.",
  defesa:"O governo alegou proteção da intimidade dos visitantes.",
  fonte:{veiculo:"Terra - Secretaria-Geral da Presidência",url:"https://www.terra.com.br/noticias/brasil/politica/stf-impoe-sigilo-no-inquerito-sobre-os-pastores-lobistas-no-mec,e3cace1a95085f8525102a9e46117febqyrrze5t.html"}},
 
 {eixo:"corrupcao",tier:2,grupo:"sigilos",data:"31 de julho de 2021",
+ titulo:"Sigilo de cem anos sobre o crachá dos filhos no Planalto",
  fato:"Foram classificadas por cem anos as informações do crachá de acesso ao Palácio do Planalto dos filhos do presidente, Carlos e Eduardo Bolsonaro, nenhum deles ocupante de cargo no Executivo federal.",
  defesa:"O governo alegou razões de proteção da intimidade, da vida privada, da honra e da imagem dos familiares.",
  fonte:{veiculo:"G1 - Secretaria-Geral da Presidência",url:"https://g1.globo.com/politica/noticia/2021/07/31/governo-impoe-sigilo-de-cem-anos-sobre-crachas-de-acesso-dos-filhos-de-bolsonaro-ao-planalto.ghtml"}},
 
 {eixo:"corrupcao",tier:2,data:"2022",
- destaque:"A pessoa que mais doou para sua campanha foi presa na investigação do Banco Master.",
+ destaque:"A pessoa que mais doou para sua campanha foi presa na investigação do Banco Master",
  fato:"O empresário e pastor Fabiano Campos Zettel, cunhado do banqueiro Daniel Vorcaro e casado com sua irmã, doou R$ 3 milhões à campanha de reeleição de Jair Bolsonaro em 2022. Foi a maior doação de pessoa física recebida pela campanha. Zettel doou ainda R$ 2 milhões à campanha de Tarcísio de Freitas ao governo de São Paulo. Em janeiro de 2026 foi preso temporariamente pela Polícia Federal na segunda fase da Operação Compliance Zero, que apura fraudes ligadas ao Banco Master.",
  defesa:"As doações são legais, foram declaradas e as contas da campanha foram aprovadas pela Justiça Eleitoral. Doações de pessoa física são permitidas até o limite de 10% da renda bruta do doador no ano anterior.",
  fonte:{veiculo:"Folha de São Paulo - TSE (Divulgação de Contas Eleitorais)",url:"https://www1.folha.uol.com.br/mercado/2026/01/saiba-quem-e-fabiano-zettel-cunhado-de-vorcaro.shtml"}},
 
 {eixo:"corrupcao",tier:2,grupo:"sigilos",data:"08 de junho de 2021",
+ titulo:"Sigilo de cem anos sobre o processo disciplinar de Pazuello",
  fato:"O processo interno do Exército contra o general Eduardo Pazuello, aberto por sua participação em ato político ao lado do presidente em maio de 2021, foi classificado com sigilo de cem anos. Pazuello não foi punido.",
  defesa:"O Exército alegou que processos disciplinares internos têm caráter reservado.",
  fonte:{veiculo:"TV Cultura - Exército Brasileiro",url:"https://cultura.uol.com.br/noticias/25628_exercito-impoe-sigilo-de-100-anos-a-processo-administrativo-contra-pazuello.html"}},
 
 {eixo:"corrupcao",tier:2,grupo:"sigilos",data:"30 de setembro de 2022",
+ titulo:"Sigilo de cem anos sobre o processo da rachadinha de Flávio",
  fato:"Foi imposto pela Receita Federal sigilo de cem anos aos documentos do processo sobre o caso da rachadinha envolvendo Flávio Bolsonaro, que até então estavam disponíveis publicamente.",
  defesa:"A Receita alegou que os documentos continham informações pessoais e restringiu o acesso a agentes públicos e às partes envolvidas.",
  fonte:{veiculo:"Estadão - Receita Federal",url:"https://www.estadao.com.br/politica/sigilo-100-anos-bolsonaro-65-vezes-no-governo/"}},
 
 {eixo:"corrupcao",tier:2,grupo:"sigilos",data:"26 de setembro de 2022",
- fato:"Foram colocadas em sigilo 565 visitas a Michelle Bolsonaro durante os últimos 13 meses do governo.",
+ titulo:"Sigilo sobre 565 visitas a Michelle Bolsonaro",
+ fato:"Foram colocadas em sigilo 565 visitas feitas por pessoas diversas a Michelle Bolsonaro durante os últimos 13 meses do governo.",
  defesa:"O governo afirmou que o histórico relativo à prestação de assistência consular contém informações pessoais relativas à intimidade, vida privada, honra e imagem e, portanto, devem ser protegidas.",
  fonte:{veiculo:"UOL - Secretaria-Geral da Presidência",url:"https://noticias.uol.com.br/ultimas-noticias/agencia-estado/2022/09/26/governo-bolsonaro-decreta-sigilo-de-100-anos-ate-em-visitas-a-michelle.htm"}},
 
 {eixo:"corrupcao",tier:2,grupo:"sigilos",data:"09 de agosto de 2021",
+ titulo:"Sigilo sobre os contratos de compra da Covaxin",
  fato:"O Ministério da Saúde impôs sigilo aos contratos de aquisição da vacina Covaxin, acordo de R$ 1,6 bilhão que se tornou alvo de investigações por suspeita de irregularidade no preço e na intermediação.",
  defesa:"O ministério alegou que a negociação ainda estava em curso.",
  fonte:{veiculo:"Ministério da Saúde",url:"https://oglobo.globo.com/politica/ministerio-da-saude-poe-sob-sigilo-documentos-sobre-compra-da-covaxin-25147553"}},
 
 {eixo:"corrupcao",tier:2,grupo:"sigilos",data:"23 de junho de 2022",
+ titulo:"Sigilo sobre os agentes da PRF na morte de Genivaldo Santos",
  fato:"A Polícia Rodoviária Federal colocou sob sigilo os procedimentos administrativos dos agentes envolvidos na morte de Genivaldo de Jesus Santos, asfixiado dentro do porta-malas de uma viatura durante abordagem em Sergipe.",
  defesa:"A corporação alegou proteção da intimidade dos servidores envolvidos.",
  decisao:"A própria PRF retirou o sigilo após a repercussão do caso.",
  fonte:{veiculo:"O Globo - Polícia Rodoviária Federal",url:"https://oglobo.globo.com/brasil/noticia/2022/06/mpf-investiga-suposto-sigilo-de-100-anos-da-prf-sobre-investigacao-de-policiais-envolvidos-na-morte-de-genivaldo-santos.ghtml"}},
 
 {eixo:"corrupcao",tier:2,data:"22 de abril de 2020",
+ titulo:"Em reunião gravada, disse que trocaria pessoas na estrutura da PF",
  fato:"Em reunião ministerial gravada, Bolsonaro declarou que trocaria pessoas na estrutura de segurança porque não podia ser surpreendido com notícias envolvendo pessoas próximas a ele.",
  defesa:"A defesa sustentou que a fala tratava da segurança pessoal da família, não da Polícia Federal.",
  fonte:{veiculo:"G1 - Vídeo da reunião ministerial divulgado pelo STF",url:"https://g1.globo.com/politica/noticia/2020/05/22/em-reuniao-bolsonaro-diz-nao-posso-ser-surpreendido-com-noticias-po-eu-tenho-a-pf-que-nao-me-da-informacoes-assista.ghtml"}},
 
 {eixo:"instituic",tier:2,data:"22 de abril de 2020",
+ titulo:"Seu ministro da Educação disse que gostaria de prender juízes do STF",
  fato:"Na mesma reunião gravada, o ministro da Educação Abraham Weintraub afirmou que gostaria de prender os ministros do STF.",
  defesa:"Weintraub disse depois que a fala foi desabafo pessoal e não posição de governo.",
  fonte:{veiculo:"G1 - Vídeo da reunião ministerial divulgado pelo STF",url:"https://g1.globo.com/politica/noticia/2020/05/22/eu-por-mim-botava-esses-vagabundos-todos-na-cadeia-comecando-no-stf-diz-ministro-da-educacao-em-reuniao.ghtml"}},
 
 {eixo:"instituic",tier:2,data:"29 de julho de 2021",
+ titulo:"Alegou fraude eleitoral sem apresentar provas em transmissão oficial",
  fato:"Bolsonaro convocou transmissão nos canais oficiais da Presidência para apresentar alegações de fraude no sistema eleitoral, sem apresentar provas que as sustentassem.",
  defesa:"Bolsonaro sustentou que apenas levantava dúvidas legítimas sobre a auditabilidade do sistema.",
  fonte:{veiculo:"G1 - Transmissão oficial da Presidência",url:"https://g1.globo.com/politica/noticia/2021/07/29/apos-tres-anos-falando-em-fraudes-eleitorais-bolsonaro-faz-live-com-noticias-falsas-e-admite-nao-ter-provas-das-acusacoes.ghtml"}},
 
 {eixo:"instituic",tier:2,data:"18 de julho de 2022",
+ titulo:"Reuniu embaixadores internacionais para questionar o sistema eleitoral",
  fato:"Bolsonaro reuniu embaixadores estrangeiros no Palácio da Alvorada para questionar o sistema eleitoral brasileiro. A reunião foi transmitida pela TV Brasil, emissora pública, com estrutura oficial do Estado.",
  defesa:"O governo sustentou que se tratava de esclarecimento institucional a corpo diplomático.",
  fonte:{veiculo:"TV Brasil - Planalto",url:"https://tvbrasil.ebc.com.br/reporter-brasil-tarde/2026/08/tse-reune-embaixadores-e-explica-o-funcionamento-das-urnas-eletronicas"}},
 
 {eixo:"gestao",tier:2,data:"28 de abril de 2020",
- destaque:"Perguntado sobre o recorde de mortes por covid, respondeu “E daí? Quer que eu faça o quê?”.",
+ destaque:"Perguntado sobre o recorde de mortes por covid, respondeu “E daí? Quer que eu faça o quê?”",
  fato:"Questionado por jornalistas sobre o recorde diário de mortes por covid-19, Bolsonaro respondeu em vídeo: “E daí? Quer que eu faça o quê?”. O país viria a registrar mais de 690 mil mortes pela doença.",
  defesa:"Bolsonaro afirmou depois que a frase foi tirada de contexto e que se referia à sua condição de não ser médico.",
  fonte:{veiculo:"Valor Econômico - Registro em vídeo",url:"https://valor.globo.com/politica/noticia/2020/04/28/bolsonaro-fala-em-retomada-da-atividade-apos-reuniao-com-empresarios-da-firjan.ghtml"}},
 
 {eixo:"gestao",tier:2,data:"03 de julho de 2020",
+ titulo:"Vetou a obrigatoriedade de máscara no comércio e nas escolas",
  fato:"Bolsonaro vetou trechos da Lei 14.019/2020 que tornavam obrigatório o uso de máscara em estabelecimentos comerciais, escolas, igrejas e órgãos públicos.",
  defesa:"O governo alegou que a obrigatoriedade invadia a esfera privada e a autonomia individual.",
  fonte:{veiculo:"Diário Oficial — Lei 14.019/2020",url:"https://www12.senado.leg.br/noticias/materias/2020/07/03/bolsonaro-veta-uso-obrigatorio-de-mascara-no-comercio-em-escolas-e-em-igrejas"}},
 
 {eixo:"gestao",tier:2,data:"07 de outubro de 2021",
+ titulo:"Vetou a distribuição gratuita de absorventes a estudantes",
  fato:"Bolsonaro vetou trechos da Lei 14.214/2021 que previam distribuição gratuita de absorventes a estudantes de baixa renda, pessoas em situação de rua e presas. O Congresso derrubou os vetos em 2022.",
  defesa:"O governo alegou ausência de indicação de fonte orçamentária para custear a medida.",
  fonte:{veiculo:"Diário Oficial da União",url:"https://www12.senado.leg.br/noticias/materias/2021/10/07/bolsonaro-veta-distribuicao-de-absorventes-a-estudantes-e-mulheres-pobres"}},
 
 {eixo:"gestao",tier:2,data:"2020 e 2021",
+ titulo:"Quatro ministros da Saúde durante a pandemia",
  fato:"O Ministério da Saúde teve quatro titulares durante a pandemia. Um deles era general do Exército sem formação médica e comandou a pasta na fase mais crítica da crise sanitária.",
  defesa:"O governo sustentou que a gestão militar trouxe capacidade logística à pasta.",
  fonte:{veiculo:"UOL",url:"https://noticias.uol.com.br/saude/ultimas-noticias/redacao/2021/03/15/mandetta-teich-pazuello-e-queiroga-os-4-ministros-da-saude-da-pandemia.htm"}},
 
 {eixo:"gestao",tier:2,data:"2020 e 2021",
+ titulo:"Promoveu cloroquina e outros tratamentos sem eficácia comprovada",
  fato:"O governo promoveu publicamente cloroquina e o chamado tratamento precoce, sem comprovação científica de eficácia, incluindo produção do medicamento pelo laboratório do Exército e campanha oficial de divulgação.",
  defesa:"O governo defendeu o direito do médico à prescrição off-label e negou ter imposto qualquer tratamento.",
  fonte:{veiculo:"Folha de São Paulo",url:"https://www1.folha.uol.com.br/poder/2021/04/entenda-como-o-governo-despejou-esforcos-com-cloroquina-e-outros-remedios-sem-eficacia-contra-covid.shtml"}},
 
 {eixo:"gestao",tier:2,data:"17 de dezembro de 2020",
+ titulo:"Afirmou que não tomaria a vacina contra a covid-19",
  fato:"Em declarações públicas gravadas, Bolsonaro afirmou que não tomaria a vacina contra a covid-19 e desestimulou a imunização, em período em que o país negociava a compra de imunizantes.",
  defesa:"Bolsonaro afirmou tratar-se de escolha pessoal.",
  fonte:{veiculo:"TV Cultura - Pronunciamentos e transmissões oficiais",url:"https://cultura.uol.com.br/noticias/14942_bolsonaro-declara-que-nao-tomara-a-vacina-contra-a-covid-19-e-critica-quem-o-considera-como-mau-exemplo.html"}},
 
 {eixo:"instituic",tier:2,data:"23 de maio de 2021",
+ titulo:"Pazuello participou de ato político na ativa, contra regulamento do Exército",
  fato:"O general Eduardo Pazuello, na ativa e então ministro da Saúde, participou de ato político ao lado de Bolsonaro no Rio de Janeiro, em desacordo com o regulamento disciplinar do Exército. O processo disciplinar foi aberto porque militares da ativa não podem se manifestar politicamente.",
  defesa:"O Exército concluiu que não houve transgressão disciplinar por se tratar de agenda ministerial.",
  fonte:{veiculo:"O Globo - Exército Brasileiro",url:"https://oglobo.globo.com/politica/noticia/2023/02/chefe-do-exercito-foi-comunicado-de-participacao-de-pazuello-em-ato-politico-com-bolsonaro-mostra-processo.ghtml"}},
 
 {eixo:"corrupcao",tier:2,data:"07 de dezembro de 2019",
+ titulo:"Impôs sigilo sob gastos do cartão corporativo da Presidência",
  fato:"Os gastos do cartão corporativo da Presidência foram mantidos sob sigilo durante o mandato. Os dados, divulgados depois, apontaram dezenas de milhões de reais em despesas no período.",
  defesa:"O governo sustentou que o sigilo protegia a segurança presidencial.",
  fonte:{veiculo:"Presidência da República",url:"https://www2.senado.leg.br/bdsf/bitstream/handle/id/568104/noticia.html?sequence=1&isAllowed=y"}},
 
 {eixo:"velha",tier:2,data:"11 de abril de 2019",
+ titulo:"Extinguiu centenas de conselhos de participação social",
  fato:"Decreto de Bolsonaro extinguiu centenas de conselhos e colegiados de participação social nas políticas públicas, reduzindo os canais formais de controle da sociedade civil sobre a administração pública.",
  defesa:"O governo sustentou que o objetivo era reduzir estruturas burocráticas improdutivas.",
  fonte:{veiculo:"Diário Oficial — Decreto 9.759/2019",url:"https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/d9759.htm"}},
 
 {eixo:"gestao",tier:2,data:"01 de janeiro de 2019",
- fato:"Medida provisória editada por Bolsonaro extinguiu o Ministério do Trabalho e o Conselho Nacional de Segurança Alimentar e Nutricional, órgão que coordenava a política de combate à fome no país.",
+ titulo:"Extinguiu o Ministério do Trabalho e o Conselho de Segurança Alimentar",
+ fato:"Medida provisória editada por Bolsonaro extinguiu o Ministério do Trabalho e o Cosan, órgão que coordenava a política de combate à fome no país.",
  defesa:"O governo sustentou que as funções seriam absorvidas por outras pastas com ganho de eficiência.",
  fonte:{veiculo:"Diário Oficial — MP 870/2019",url:"https://www2.camara.leg.br/legin/fed/medpro/2019/medidaprovisoria-870-1-janeiro-2019-787588-norma-pe.html"}},
 
 {eixo:"velha",tier:2,data:"18 de novembro de 2020",
- destaque:"Eleito contra a velha política, entregou a governabilidade ao Centrão e a Arthur Lira.",
+ destaque:"Eleito contra a velha política, entregou a governabilidade ao Centrão e a Arthur Lira",
  fato:"Arthur Lira, um dos principais nomes do Centrão e eleito à presidência da Câmara com o apoio de Bolsonaro, tornou-se peça central da governabilidade, com distribuição de emendas e cargos como moeda de sustentação parlamentar. Este movimento fortaleceu o modelo de coalizão que a campanha de 2018 prometera encerrar.",
  defesa:"O governo sustentou que a articulação era necessária para aprovar sua agenda no Congresso.",
  fonte:{veiculo:"Gazeta do Povo",url:"https://www.gazetadopovo.com.br/republica/arthur-lira-bolsonaro-presidencia-camara/"}},
 
 {eixo:"fiscal",tier:2,data:"22 de outubro de 2022",
+ titulo:"Apoiou a PEC dos Precatórios e o pacote de benefícios pré-eleitoral",
  fato:"O governo apoiou a PEC dos Precatórios e o pacote de benefícios aprovado às vésperas da eleição de 2022, contornando o teto de gastos e ampliando a despesa em ano eleitoral.",
  defesa:"O governo sustentou que eram resposta emergencial à inflação e aos efeitos da pandemia.",
  fonte:{veiculo:"BBC",url:"https://www.bbc.com/portuguese/brasil-63419897"}},
 
 {eixo:"fiscal",tier:2,data:"05 de agosto de 2021",
- fato:"A privatização dos Correios foi aprovada na Câmara e não avançou no Senado. Das privatizações centrais prometidas por Paulo Guedes, apenas a Eletrobras se concretizou.",
+ titulo:"Realizou apenas uma das diversas privatizações prometidas",
+ fato:"Das privatizações prometidas por Paulo Guedes, apenas a Eletrobras se concretizou. A privatização dos Correios chegou a ser aprovada na Câmara, mas não avançou no Senado.",
  defesa:"O governo atribuiu o resultado à resistência parlamentar e ao calendário eleitoral.",
  fonte:{veiculo:"Senado Federal",url:"https://www.camara.leg.br/noticias/790314-CAMARA-APROVA-PROJETO-QUE-PERMITE-A-PRIVATIZACAO-DOS-CORREIOS"}},
 
 {eixo:"fiscal",tier:2,data:"26 de fevereiro de 2021",
+ titulo:"Trocou o comando da Petrobras diante da alta dos combustíveis",
  fato:"Diante da alta dos combustíveis, o governo trocou o comando da Petrobras e pressionou publicamente por mudança na política de preços, contrariando o compromisso de respeito à governança da companhia.",
  defesa:"O governo afirmou que a mudança era prerrogativa do acionista controlador.",
  fonte:{veiculo:"FecomercioSP",url:"https://www.fecomercio.com.br/noticia/entenda-por-que-o-mercado-reagiu-mal-a-troca-de-comando-na-petrobras?%2Fnoticia%2Fentenda-por-que-o-mercado-reagiu-mal-a-troca-de-comando-na-petrobras="}},
 
 {eixo:"gestao",tier:2,data:"23 de abril de 2021",
+ titulo:"Adiou o Censo por cortes no orçamento",
  fato:"O Censo demográfico foi adiado sucessivamente por corte orçamentário, deixando o país sem a base estatística que orienta a distribuição de recursos e o planejamento de políticas públicas.",
  defesa:"O governo alegou restrição fiscal e os efeitos da pandemia sobre a coleta de campo.",
  fonte:{veiculo:"IBGE",url:"https://www.ibge.gov.br/novo-portal-destaques/30569-adiamento-do-censo-demografico.html"}},
 
 {eixo:"gestao",tier:2,data:"02 de junho de 2022",
+ titulo:"Cortes no orçamento de CNPq e Capes",
  fato:"Orçamentos de fomento à ciência e à pós-graduação, incluindo CNPq e Capes, sofreram cortes e bloqueios sucessivos no período, com redução do número de bolsas de pesquisa.",
  defesa:"O governo sustentou que os cortes decorriam de restrição fiscal geral e não de escolha setorial.",
  fonte:{veiculo:"MCTI / Capes",url:"https://www.camara.leg.br/noticias/883070-orcamento-da-pesquisa-cientifica-perdeu-mais-de-r-80-bilhoes-nos-ultimos-sete-anos/"}},
 
 {eixo:"instituic",tier:2,data:"30 de dezembro de 2022",
+ titulo:"Saiu do país e não participou da tradicional transmissão de faixa presidencial",
  fato:"Bolsonaro deixou o Brasil utilizando avião da FAB dois dias antes do fim do mandato e não participou da transmissão da faixa presidencial, quebrando a praxe democrática e republicana de transferência de poder.",
  defesa:"O governo não deu qualquer informação sobre a viagem.",
  fonte:{veiculo:"O Globo - Registro público",url:"https://oglobo.globo.com/politica/noticia/2022/12/bolsonaro-deixa-ao-pais-a-dois-dias-de-passar-faixa-para-lula.ghtml"}},
 
 {eixo:"instituic",tier:2,data:"29 de março de 2021",
+ titulo:"Os três comandantes das Forças Armadas renunciaram conjutamente em protesto",
  fato:"Os comandantes do Exército, da Marinha e da Aeronáutica deixaram os cargos conjuntamente, episódio sem precedente desde a redemocratização, em meio a discordância com Bolsonaro e crise no Ministério da Defesa.",
  defesa:"O governo tratou o episódio como troca ordinária de comando.",
  fonte:{veiculo:"BBC - Ministério da Defesa",url:"https://www.bbc.com/portuguese/brasil-56582696"}},
 
 {eixo:"instituic",tier:2,data:"04 de agosto de 2025",
+ titulo:"Decretada sua prisão domiciliar por descumprimento de medidas cautelares",
  fato:"Moraes decretou prisão domiciliar de Bolsonaro por descumprimento de medidas cautelares, incluindo a proibição de contato com autoridades estrangeiras e com o filho Eduardo, então nos Estados Unidos articulando sanções contra o Brasil.",
  defesa:"A defesa sustentou que não houve descumprimento deliberado das medidas.",
  fonte:{veiculo:"STF",url:"https://noticias.stf.jus.br/postsnoticias/stf-determina-prisao-domiciliar-do-ex-presidente-jair-bolsonaro-por-descumprimento-de-medidas-cautelares/"}},
 
 {eixo:"instituic",tier:2,data:"22 de novembro de 2025",
+ titulo:"Danificou a própria tornozeleira eletrônica com um ferro de solda",
  fato:"Bolsonaro danificou a própria tornozeleira eletrônica com um ferro de solda. O episódio foi registrado em vídeo divulgado pela PF com autorização do STF e levou à revogação da prisão domiciliar e à transferência para a Superintendência da Polícia Federal.",
  defesa:"A defesa alegou que o uso de medicamentos teria levado o ex-presidente a cometer o ato.",
  fonte:{veiculo:"G1 - Polícia Federal",url:"https://g1.globo.com/df/distrito-federal/noticia/2025/11/22/video-mostra-tornozeleira-de-bolsonaro-danificada-meti-um-ferro-quente-aqui-diz-ex-presidente.ghtml"}},
 
 {eixo:"brasil",tier:2,data:"20 de maio de 2022",
+ titulo:"Desmatamento na Amazônia subiu enquanto o orçamento de fiscalização caiu",
  fato:"Dados do Inpe registraram forte elevação do desmatamento na Amazônia no mandato, em paralelo à redução de orçamento do Ibama e do ICMBio e à queda no número de autos de infração ambiental.",
  defesa:"O governo contestou publicamente a metodologia do Inpe e atribuiu os dados a falhas técnicas.",
  fonte:{veiculo:"UOL - Inpe/PRODES",url:"https://noticias.uol.com.br/politica/ultimas-noticias/2022/05/20/elon-musk-jair-bolsonaro-desmatamento-amazonia-satelites-inpe.htm"}},
 
 {eixo:"brasil",tier:2,data:"15 de agosto de 2019",
- fato:"O Fundo Amazônia ficou paralisado após o conflito com Noruega e Alemanha, interrompendo o principal canal de financiamento internacional para o combate ao desmatamento. O desgaste ambiental do país alimentou resistência europeia ao acordo Mercosul–União Europeia.",
+ titulo:"Fundo Amazônia foi paralisado após conflito com Noruega e Alemanha",
+ fato:"O Fundo Financeiro de ajuda à Amazônia ficou paralisado após o conflito com Noruega e Alemanha, interrompendo o principal canal de financiamento internacional para o combate ao desmatamento. O desgaste ambiental do país alimentou resistência europeia ao acordo Mercosul–União Europeia.",
  defesa:"O governo alegou que os doadores tentavam interferir na soberania brasileira sobre a Amazônia.",
  fonte:{veiculo:"BBC - Ministério do Meio Ambiente",url:"https://www.bbc.com/portuguese/brasil-49365457"}},
 
 {eixo:"brasil",tier:2,data:"29 de março de 2021",
- fato:"No governo Bolsonaro, o Ministério das Relações Exteriores adotou orientação de alinhamento ideológico com a administração Donald Trump e atritos retóricos com a China, principal parceiro comercial do agronegócio brasileiro. O chanceler deixou o cargo em março de 2021 sob pressão do Congresso.",
+ titulo:"Itamaraty alinhou-se ideologicamente aos EUA e teve atritos com a China",
+ fato:"O Ministério das Relações Exteriores adotou orientação de alinhamento ideológico com a administração Donald Trump e atritos retóricos com a China, principal parceiro comercial do agronegócio brasileiro. O chanceler deixou o cargo em março de 2021 sob pressão do Congresso.",
  defesa:"O ex-chanceler sustentou que defendia soberania e valores nacionais.",
  fonte:{veiculo:"O Globo",url:"https://oglobo.globo.com/mundo/analise-sob-ernesto-funcao-do-itamaraty-foi-inflamar-bases-do-bolsonarismo-vendo-no-conflito-uma-virtude-24946654"}},
 
 {eixo:"brasil",tier:2,data:"12 de julho de 2022",
- destaque:"O Brasil voltou ao Mapa da Fome da ONU durante o mandato.",
- fato:"O Brasil voltou ao Mapa da Fome sob o governo Bolsonaro após o país ter saído da lista em 2014.",
+ destaque:"O Brasil voltou ao Mapa da Fome da ONU durante o mandato",
+ fato:"O país voltou ao Mapa da Fome sob o governo Bolsonaro após ter saído da lista em 2014.",
  defesa:"O governo atribuiu o resultado aos efeitos globais da pandemia e da guerra na Ucrânia.",
  fonte:{veiculo:"CNN — relatório SOFI 2022",url:"https://www.cnnbrasil.com.br/nacional/relatorio-da-onu-mostra-que-brasil-voltou-para-o-mapa-da-fome-em-2021/"}},
 
 {eixo:"brasil",tier:2,data:"20 de janeiro de 2023",
+ titulo:"Garimpo ilegal levou à emergência sanitária em terra Yanomami",
  fato:"O avanço do garimpo ilegal na Terra Indígena Yanomami levou o Ministério da Saúde a declarar emergência sanitária em janeiro de 2023, apontando desnutrição grave e colapso do atendimento de saúde na área durante o período anterior.",
  defesa:"O ex-governo negou omissão e afirmou ter mantido operações de fiscalização na região.",
  fonte:{veiculo:"Ministério da Saúde",url:"https://g1.globo.com/saude/noticia/2023/01/20/ministerio-da-saude-decreta-emergencia-de-saude-publica-para-combater-desassistencia-de-indigenas-yanomami.ghtml"}},
 
 {eixo:"brasil",tier:2,data:"09 de julho de 2025",
+ titulo:"EUA impuseram tarifa de 50% citando o processo contra Bolsonaro",
  fato:"O governo dos Estados Unidos impôs tarifa de 50% sobre produtos brasileiros, apresentando a medida como resposta ao processo judicial contra Bolsonaro. A PF apurou que o ex-presidente e o filho Eduardo procuraram autoridades americanas com o objetivo de obter sanções contra agentes públicos brasileiros.",
  defesa:"Bolsonaro negou ter pedido sanções e afirmou que a decisão foi exclusiva do governo americano.",
  fonte:{veiculo:"The Washington Post",url:"https://www.washingtonpost.com/world/2025/07/09/trump-tariffs-brazil-jair-bolsonaro/"}},
 
 {eixo:"fiscal",tier:2,data:"23 de junho de 2022",
- destaque:"Bolsonaro zerou o imposto dos combustíveis com validade até o fim das eleições de 2022.",
+ destaque:"Bolsonaro zerou o imposto dos combustíveis com validade até o fim das eleições de 2022",
  fato:"A Lei Complementar 194 e a Lei 14.592 zeraram as alíquotas de PIS e Cofins sobre gasolina, diesel, gás de cozinha e etanol, com vigência fixada até 31 de dezembro de 2022, exatamente o fim do ano eleitoral. A renúncia de receita não teve compensação permanente.",
  defesa:"O governo sustentou que a medida respondia ao choque internacional de preços do petróleo.",
  fonte:{veiculo:"Diário Oficial",url:"https://www.in.gov.br/en/web/dou/-/lei-complementar-n-194-de-23-de-junho-de-2022-410028232"}},
 
 {eixo:"fiscal",tier:2,data:"24 de junho de 2022",
+ titulo:"Valor do Auxílio Brasil foi elevado com vigência até o fim do ano eleitoral",
  fato:"A Emenda Constitucional 123, aprovada a três meses da eleição, declarou estado de emergência para permitir a elevação do Auxílio Brasil a R$ 600 e a criação de novos benefícios, com vigência limitada a 31 de dezembro de 2022. A medida contornou as restrições da lei eleitoral à criação de benefícios em ano de pleito.",
  defesa:"O governo sustentou que a emergência decorria da inflação de alimentos e combustíveis.",
  fonte:{veiculo:"Valor Econômico - Diário Oficial (EC 123/2022)",url:"https://valor.globo.com/politica/noticia/2022/06/24/a-trs-meses-das-eleies-bolsonaro-confirma-aumento-do-auxlio-brasil-para-r-600.ghtml"}},
 
 {eixo:"fiscal",tier:2,data:"14 de maio de 2020",
+ titulo:"Proposta de auxílio emergencial de R$ 200 foi elevada a R$ 600 pelo Congresso",
  fato:"A proposta inicial do governo para o auxílio emergencial durante a pandemia era de R$ 200 mensais. O valor foi elevado a R$ 600 por iniciativa do Congresso Nacional, contra a posição original da equipe econômica.",
  defesa:"O governo alegou preocupação com o impacto fiscal e afirmou depois ter sido o responsável pelo programa.",
  fonte:{veiculo:"Congresso Nacional — Lei 13.982/2020",url:"https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/13185"}},
 
 {eixo:"gestao",tier:2,data:"16 de janeiro de 2020",
- destaque:"O secretário de Cultura gravou vídeo oficial reproduzindo trecho de discurso de ministro da Alemanha Nazista.",
+ destaque:"Secretário de Cultura reproduziu discurso de ministro nazista em vídeo oficial",
  fato:"Roberto Alvim, secretário especial da Cultura, divulgou vídeo institucional em que reproduziu trecho de discurso de Joseph Goebbels, ministro da propaganda nazista, com música de Wagner ao fundo. Foi exonerado no dia seguinte por ato publicado no Diário Oficial.",
  defesa:"Alvim afirmou que a coincidência foi acidental e que não conhecia a origem do texto.",
  fonte:{veiculo:"BBC - Vídeo oficial",url:"https://www.bbc.com/portuguese/brasil-51149263"}},
 
  {eixo:"corrupcao",tier:2,data:"27 de outubro de 2021",
- destaque:"Sem saber que estava com o microfone aberto, descreveu como receber propina e perguntou o preço de uma vaga no STF.",
+ destaque:"Com o microfone aberto sem saber, descreveu como receber propina e o preço de uma vaga no STF",
  fato:"Durante o intervalo comercial de uma entrevista à Jovem Pan, cuja transmissão pela internet seguia no ar sem que ele soubesse, Bolsonaro descreveu em detalhe como se recebe propina em espécie: pede-se um sapato número 43 e “chega o sapato cheio de notinha de R$ 100 verdinha dentro”. Em seguida começou a perguntar quanto valeria uma vaga no Supremo Tribunal Federal e interrompeu a frase ao ser avisado de que estava ao vivo.",
  defesa:"A fala foi feita em tom informal e atribuída por ele a práticas de terceiros no passado, não a conduta própria.",
  fonte:{veiculo:"TV Cultura - Jovem Pan",url:"https://www.youtube.com/watch?v=1eHL8UZu0VI"}},
 
 {eixo:"gestao",tier:2,data:"24 de março de 2020",
+ titulo:"Chamou a covid-19 de “gripezinha” em pronunciamento oficial",
  fato:"Em pronunciamento oficial transmitido em cadeia nacional de rádio e televisão, Bolsonaro minimizou a gravidade da covid-19, afirmando que no seu caso não sentiria nada além de “uma gripezinha”, e criticou as medidas de isolamento adotadas por governadores e prefeitos.",
  defesa:"Bolsonaro afirmou depois que se referia ao próprio histórico de saúde e que sua preocupação era com o impacto econômico do fechamento.",
  fonte:{veiculo:"BBC - Pronunciamento oficial em cadeia nacional",url:"https://www.youtube.com/watch?v=zuBs0NVr-70"}},
 
 {eixo:"gestao",tier:2,data:"22 de março de 2021",
+ titulo:"Imitou uma pessoa com falta de ar ao comentar sobre a covid-19",
  fato:"Em evento público registrado em vídeo, Bolsonaro imitou uma pessoa com falta de ar ao comentar os efeitos da covid-19, gesto feito enquanto o país registrava média diária de milhares de mortes pela doença.",
  defesa:"O governo afirmou que o gesto se referia à dificuldade respiratória causada pelo uso prolongado de máscara.",
  fonte:{veiculo:"O Globo Registro em vídeo",url:"https://www.youtube.com/watch?v=KPOKuweJw6U"}},
 
 {eixo:"gestao",tier:2,data:"25 outubro de 2021",
- destaque:"Afirmou em transmissão oficial que vacinados estariam desenvolvendo aids. Plataformas removeram o vídeo por divulgação de fake news.",
+ destaque:"Disse em transmissão oficial que vacinados desenvolveriam aids",
  fato:"Em transmissão semanal nas redes oficiais, Bolsonaro afirmou que pessoas totalmente vacinadas contra a covid-19 estariam desenvolvendo aids. A alegação não tem base científica. Facebook, Instagram e YouTube removeram o conteúdo por violar políticas de desinformação sobre saúde, e o episódio originou pedido de investigação no Supremo.",
  defesa:"Bolsonaro afirmou ter apenas mencionado um suposto relatório estrangeiro e negou ter feito afirmação própria.",
  fonte:{veiculo:"G1 - Transmissão oficial",url:"https://g1.globo.com/tecnologia/noticia/2021/10/25/twitter-post-bolsonaro-vacina-covid-aids.ghtml"}},
 
  {eixo:"corrupcao",tier:2,data:"fevereiro e outubro de 2019",
+ titulo:"BC negou e depois concedeu a autorização do Banco Master",
  fato:"O Banco Central negou em fevereiro de 2019 o pedido de autorização de funcionamento do Banco Master, por falta de clareza sobre a origem dos recursos apresentados pelos acionistas. Em outubro do mesmo ano, sob a nova presidência de Roberto Campos Neto, indicado por Bolsonaro, a autorização para atuar foi concedida.",
  defesa:"O Banco Central sustenta que a autorização seguiu os ritos técnicos vigentes e que a nova documentação apresentada supriu a exigência que motivara a negativa inicial.",
  fonte:{veiculo:"O Globo - Banco Central",url:"https://oglobo.globo.com/blogs/malu-gaspar/post/2026/04/master-bc-decide-liberar-documentos-do-processo-que-autorizou-vorcaro-a-assumir-banco.ghtml"}},
 
 {eixo:"brasil",tier:2,data:"30 de abril de 2020",
+ titulo:"Exonerou os chefes da fiscalização do Ibama após operação contra garimpo",
  fato:"Por atos publicados no Diário Oficial, o governo Bolsonaro exonerou Renê Luiz de Oliveira, coordenador-geral de fiscalização ambiental, e Hugo Ferreira Netto Loss, coordenador de operações de fiscalização do Ibama. As exonerações ocorreram dezoito dias após reportagem televisiva exibir imagens da operação que eles comandavam contra o garimpo ilegal em terras indígenas no sul do Pará. Dias antes, o diretor de proteção ambiental do órgão também fora exonerado. Para o lugar de Oliveira foi indicado um coronel da reserva da Polícia Militar.",
  defesa:"O ministro Ricardo Salles afirmou à época que não havia incentivo ou apoio a nenhuma atividade ilegal e que as operações de fiscalização continuariam.",
  fonte:{veiculo:"Folha de São Paulo - Diário Oficial da União",url:"https://www1.folha.uol.com.br/ambiente/2020/04/ibama-exonera-chefes-de-fiscalizacao-apos-operacao-contra-garimpo.shtml"}},
 
 /* ===================== NÍVEL 3 — ACUSAÇÃO EM CURSO ===================== */
 {eixo:"corrupcao",tier:3,data:"04 de julho de 2024",
- destaque:"Bolsonaro foi indiciado por peculato e lavagem de dinheiro no caso das joias sauditas.",
+ destaque:"Bolsonaro foi indiciado por peculato e lavagem de dinheiro no caso das joias sauditas",
  fato:"A Polícia Federal indiciou Bolsonaro por peculato, lavagem de dinheiro e associação criminosa no caso dos presentes recebidos da Arábia Saudita, apurando tentativa de incorporação de bens do acervo público ao patrimônio privado.",
  defesa:"A defesa nega irregularidades e sustenta que os bens eram presentes pessoais, não acervo da União.",
  fonte:{veiculo:"CNN - Polícia Federal",url:"https://www.cnnbrasil.com.br/politica/saiba-quem-sao-os-indiciados-com-bolsonaro-no-caso-das-joias-sauditas/"}},
 
 {eixo:"fiscal",tier:3,data:"16 de abril de 2022",
- destaque:"Sob o governo Bolsonaro, o Exército adquiriu 60 próteses penianas a R$ 56 mil cada.",
+ destaque:"Sob o governo Bolsonaro, o Exército adquiriu 60 próteses penianas a R$ 56 mil cada",
  fato:"O Tribunal de Contas da União abriu investigação sobre a aquisição, pelo Exército, de 60 próteses penianas infláveis ao custo de R$ 3,4 milhões (cerca de R$ 56 mil por unidade), compra aprovada pelo Ministério da Defesa. A apuração ocorreu no mesmo período em que as Forças Armadas eram questionadas pela compra de comprimidos de sildenafila. Em entrevista em agosto, Bolsonaro defendeu pessoalmente as duas aquisições.",
  defesa:"O Ministério da Defesa sustentou que a sildenafila é usada no tratamento de hipertensão pulmonar, além da disfunção erétil, e que as próteses atendem beneficiários do sistema de saúde militar. Bolsonaro afirmou que a quantidade de comprimidos era proporcionalmente pequena ao efetivo.",
  fonte:{veiculo:"UOL ribunal de Contas da União",url:"https://noticias.uol.com.br/politica/ultimas-noticias/2022/04/16/tcu-abre-investigacao-sobre-compra-de-proteses-penianas-pelo-exercito.htm"}},
 
 {eixo:"brasil",tier:3,data:"21 de maio de 2021",
- destaque:"O ministro do Meio Ambiente de Bolsonaro tornou-se réu por contrabando de madeira da Amazônia.",
+ destaque:"Ministro do Meio Ambiente tornou-se réu por contrabando de madeira da Amazônia",
  fato:"A Operação Akuanduba apurou esquema de exportação ilegal de madeira da Amazônia para os Estados Unidos e a Europa. A investigação teve como eixo um despacho do Ibama de 2020 que dispensou a exigência de autorização para exportar madeira nativa, com efeito retroativo. O então ministro Ricardo Salles deixou o cargo em junho de 2021. Em 2025 tornou-se réu por contrabando de madeira.",
  defesa:"Salles nega irregularidades e sustenta que o despacho apenas simplificava procedimento burocrático sem afetar o controle ambiental.",
   fonte:{veiculo:"O Globo - Polícia Federal",url:"https://oglobo.globo.com/epoca/brasil/akuanduba-operacao-que-mirou-ricardo-salles-25027404"}},
 
 {eixo:"corrupcao",tier:3,data:"19 de março de 2024",
+ titulo:"Indiciado por inserir dados falsos de vacinação nos registros oficiais",
  fato:"A Polícia Federal indiciou Bolsonaro, Mauro Cid e outras 15 pessoas por associação criminosa e inserção de dados falsos em sistema de informações. A apuração indicou que dados falsos de vacinação contra a covid-19 do então presidente e de sua filha foram inseridos e depois excluídos dos registros oficiais do Ministério da Saúde, no período em que ele precisaria de comprovante para viajar aos Estados Unidos.",
  defesa:"Bolsonaro negou ter ordenado ou tido conhecimento da inserção dos dados.",
  fonte:{veiculo:"G1 - Polícia Federal",url:"https://g1.globo.com/jornal-nacional/noticia/2024/03/19/pf-indicia-bolsonaro-mauro-cid-e-mais-15-pessoas-por-falsificacao-de-certificados-de-vacinas-contra-covid.ghtml"}},
 
 {eixo:"corrupcao",tier:3,data:"20 de junho de 2025",
- destaque:"Bolsonaro foi indiciado por usar a Abin para vigiar adversários políticos e outras autoridades.",
+ destaque:"Bolsonaro foi indiciado por usar a Abin para vigiar adversários políticos e outras autoridades",
  fato:"A Polícia Federal indiciou Bolsonaro e outros investigados por envolvimento em esquema de monitoramento ilegal por meio da Abin, apontando uso da agência de inteligência de Estado para vigiar autoridades e produzir material contra adversários.",
  defesa:"Bolsonaro nega participação e conhecimento do esquema.",
  fonte:{veiculo:"CNN - Polícia Federal",url:"https://www.cnnbrasil.com.br/politica/veja-quem-sao-os-indiciados-pela-pf-no-esquema-da-abin-paralela/"}},
 
 {eixo:"brasil",tier:3,data:"17 de junho de 2026",
- destaque:"Eduardo Bolsonaro foi condenado por ajudar a articular nos EUA sanções econômicas contra o Brasil.",
+ destaque:"Eduardo Bolsonaro foi condenado por articular nos EUA sanções contra o Brasil",
  fato:"A Primeira Turma do STF condenou o ex-deputado Eduardo Bolsonaro a 4 anos e 2 meses de prisão, em regime inicial semiaberto, por coação no curso do processo. A corte concluiu que ele usou sua condição de parlamentar para articular junto a autoridades norte-americanas sanções contra ministros do Supremo e medidas econômicas contra o Brasil, com o objetivo de constranger o tribunal durante o julgamento do pai. O relator reconheceu ao menos nove episódios da prática, e a condenação foi unânime. Em setembro de 2026 a Turma rejeitou os embargos de declaração da defesa e manteve a sentença.",
  defesa:"A Defensoria Pública da União sustentou que não houve ameaça grave suficiente para configurar o crime e que a atuação no exterior estava protegida pela liberdade de expressão e pela imunidade parlamentar.",
  decisao:"A condenação ainda não transitou em julgado: cabem novos recursos antes da execução da pena.",
  fonte:{veiculo:"STF — AP 2782-DF",url:"https://portal.stf.jus.br/processos/detalhe.asp?incidente=7505277"}},
 
 {eixo:"corrupcao",tier:3,data:"29 de junho de 2021",
+ titulo:"Contrato da Covaxin suspenso um dia após notícia-crime contra Bolsonaro",
  fato:"Um dia após Bolsonaro ser alvo de notícia-crime, o Ministério da Saúde suspendeu o contrato de compra de 20 milhões de doses da vacina Covaxin, de R$ 1,6 bilhão, intermediado pela empresa Precisa Medicamentos. Servidores relataram à CPI da Pandemia pressão atípica para acelerar a negociação, a preço por dose superior ao de outros imunizantes, e pedido de pagamento adiantado não previsto em contrato.",
  defesa:"O governo negou irregularidade e afirmou que o contrato foi suspenso assim que surgiram as suspeitas.",
  fonte:{veiculo:"IstoÉ - Ministério da Saúde",url:"https://istoedinheiro.com.br/decisao-sobre-covaxin-ocorre-um-dia-apos-presidente-ser-alvo-de-noticia-crime"}},
 
 {eixo:"gestao",tier:3,data:"22 de junho de 2022",
+ titulo:"Ex-ministro da Educação preso por favorecimento a pastores no MEC",
  fato:"Milton Ribeiro, ex-ministro da Educação, foi preso em investigação sobre suspeita de favorecimento na liberação de verbas do MEC a pastores sem cargo formal no governo.",
  defesa:"Ribeiro negou irregularidades.",
  fonte:{veiculo:"Folha de São Paulo - Polícia Federal",url:"https://www1.folha.uol.com.br/poder/2022/06/pf-mira-ex-ministro-e-pastores-ligados-a-bolsonaro-em-operacao-sobre-verba-do-mec.shtml"}},
 
 {eixo:"gestao",tier:3,data:"20 de outubro de 2021",
+ titulo:"CPI da Pandemia pediu o indiciamento de Bolsonaro por nove crimes",
  fato:"O relatório final da CPI da Pandemia pediu o indiciamento de Bolsonaro por nove crimes, entre eles charlatanismo e epidemia com resultado morte, apontando atraso na aquisição de vacinas e promoção de tratamento sem eficácia comprovada.",
  defesa:"Bolsonaro classificou o relatório como peça política.",
  fonte:{veiculo:"Senado Federal — relatório final da CPI",url:"https://www12.senado.leg.br/noticias/materias/2021/10/20/com-nove-crimes-atribuidos-a-bolsonaro-relatorio-da-cpi-e-oficialmente-apresentado"}},
 
 {eixo:"gestao",tier:3,data:"13 de maio de 2021",
+ titulo:"Ofertas de vacina da Pfizer ficaram meses sem resposta do governo",
  fato:"A CPI da Pandemia apurou que ofertas de venda de vacinas feitas pela Pfizer ao governo brasileiro em 2020 ficaram meses sem resposta efetiva, atraso que a comissão classificou como determinante para o calendário de imunização do país.",
  defesa:"O governo alegou que as condições contratuais exigidas pela fabricante eram inaceitáveis à época.",
  fonte:{veiculo:"Senado Federal — CPI da Pandemia",url:"https://www12.senado.leg.br/noticias/materias/2021/05/13/representante-da-pfizer-confirma-governo-nao-respondeu-ofertas-feitas-em-agosto-de-2020"}},
 
  {eixo:"instituic",tier:3,data:"15 de maio de 2024",
+ titulo:"TCU encontrou armas registradas em nome de pessoas falecidas",
  fato:"A auditoria do TCU sobre o controle de armas identificou cadastros de armas ativos vinculados a pessoas falecidas, registros com situação regular ligados a certificados cancelados ou vencidos, dentre outros problemas na fiscalização. O relatório apontou ainda que o Exército reduziu os recursos orçamentários destinados à fiscalização de produtos controlados. Cruzamento feito na auditoria identificou 3.873 armas apreendidas pela polícia de São Paulo com indícios de incoerência com os registros no sistema do Exército.",
  defesa:"O Exército informou ter apresentado considerações ao TCU e vir adotando medidas para aperfeiçoar os processos de autorização e fiscalização.",
  fonte:{veiculo:"TCU — TC 007.869/2023",url:"https://portal.tcu.gov.br/imprensa/noticias/controle-pelo-exercito-do-acesso-a-armas-de-fogo-tem-fragilidades"}},
@@ -662,19 +713,22 @@ const ITENS = [
 
 /* ===================== NÍVEL 4 — APURAÇÃO JORNALÍSTICA ===================== */
 {eixo:"corrupcao",tier:4,data:"30 de agosto de 2022",
+ titulo:"Levantamento apontou 51 imóveis da família Bolsonaro comprados em espécie",
  fato:"Levantamento do UOL em escrituras de cartório apontou que, dos 107 imóveis negociados pelo então presidente, irmãos e filhos desde os anos 1990, ao menos 51 foram adquiridos total ou parcialmente com pagamento em espécie, somando R$ 13,5 milhões em valores da época.",
  defesa:"Bolsonaro afirmou não haver nada de irregular nas compras.",
  decisao:"O ministro André Mendonça rejeitou por duas vezes pedidos de investigação sobre o caso, apontando insuficiência de elementos mínimos.",
  fonte:{veiculo:"UOL",url:"https://noticias.uol.com.br/politica/ultimas-noticias/2022/08/30/patrimonio-familia-jair-bolsonaro-dinheiro-vivo.htm"}},
 
 {eixo:"instituic",tier:4,data:"16 de janeiro de 2020",
+ titulo:"Recordes de agressão a jornalistas atribuídos ao presidente",
  fato:"Entidades de classe do jornalismo registraram recordes sucessivos de casos de agressão, intimidação e descredibilização contra jornalistas no período, com parcela expressiva atribuída diretamente a declarações do presidente e de integrantes do governo.",
  defesa:"O governo sustentou que criticar a imprensa é exercício legítimo da liberdade de expressão.",
  fonte:{veiculo:"Fenaj / Abraji",url:"https://oglobo.globo.com/politica/agressao-jornalistas-veiculos-de-comunicacao-aumenta-em-54-diz-relatorio-bolsonaro-responsavel-por-mais-da-metade-1-24195220"}},
 
 {eixo:"instituic",tier:4,data:"13 de maio de 2026",
+ titulo:"Flávio teria negociado R$ 134 milhões com Vorcaro para filme sobre Jair",
  fato:"Segundo apuração do Intercept, Flávio Bolsonaro teria negociado com Daniel Vorcaro R$ 134 milhões para financiar filme sobre Jair Bolsonaro. A investigação corre sob sigilo parcial.",
- defesa:"Flávio Bolsonaro foi questionado presencialmente pelo Intercept sobre o financiamento de Vorcaro ao filme e respondeu: “De onde você tirou essa informação? É mentira”",
+ defesa:"Flávio Bolsonaro foi questionado presencialmente pelo Intercept sobre o financiamento de Vorcaro ao filme e respondeu: “De onde você tirou essa informação? É mentira”.",
  fonte:{veiculo:"Intercept",url:"https://www.intercept.com.br/2026/05/13/audio-flavio-negociou-vorcaro-milhoes/"}}
 ];
 
@@ -793,8 +847,10 @@ function card(i){
   const src=i.fonte.url
     ? `<a href="${i.fonte.url}" target="_blank" rel="noopener">${i.fonte.veiculo}</a>`
     : `${i.fonte.veiculo} — <span class="pend">link do original pendente</span>`;
+  const titulo = i.titulo || i.destaque;
   return `<article class="item" id="${i.id}">
     <span class="date">${i.data}</span>
+    ${titulo?`<p class="titulo">${titulo}</p>`:""}
     <p class="fato">${i.fato}</p>
     ${i.defesa?`<p class="against"><b>O que a defesa alega:</b> ${i.defesa}</p>`:""}
     ${i.decisao?`<p class="decisao"><b>Continuidade do caso:</b> ${i.decisao}</p>`:""}
