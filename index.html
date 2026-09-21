@@ -353,7 +353,7 @@ const ITENS = [
  fonte:{veiculo:"G1 - Secretaria-Geral da Presidência",url:"https://g1.globo.com/politica/noticia/2021/07/31/governo-impoe-sigilo-de-cem-anos-sobre-crachas-de-acesso-dos-filhos-de-bolsonaro-ao-planalto.ghtml"}},
 
 {eixo:"corrupcao",tier:2,data:"2022",
- destaque:"O maior doador pessoa física da campanha de reeleição de Bolsonaro foi preso depois na investigação do Banco Master.",
+ destaque:"A pessoa que mais doou para sua campanha foi presa na investigação do Banco Master.",
  fato:"O empresário e pastor Fabiano Campos Zettel, cunhado do banqueiro Daniel Vorcaro e casado com sua irmã, doou R$ 3 milhões à campanha de reeleição de Jair Bolsonaro em 2022. Foi a maior doação de pessoa física recebida pela campanha. Zettel doou ainda R$ 2 milhões à campanha de Tarcísio de Freitas ao governo de São Paulo. Em janeiro de 2026 foi preso temporariamente pela Polícia Federal na segunda fase da Operação Compliance Zero, que apura fraudes ligadas ao Banco Master.",
  defesa:"As doações são legais, foram declaradas e as contas da campanha foram aprovadas pela Justiça Eleitoral. Doações de pessoa física são permitidas até o limite de 10% da renda bruta do doador no ano anterior.",
  fonte:{veiculo:"Folha de São Paulo - TSE (Divulgação de Contas Eleitorais)",url:"https://www1.folha.uol.com.br/mercado/2026/01/saiba-quem-e-fabiano-zettel-cunhado-de-vorcaro.shtml"}},
@@ -560,7 +560,7 @@ const ITENS = [
  fonte:{veiculo:"BBC - Vídeo oficial",url:"https://www.bbc.com/portuguese/brasil-51149263"}},
 
  {eixo:"corrupcao",tier:2,data:"27 de outubro de 2021",
- destaque:"Sem saber que estava com o microfone aberto, Bolsonaro descreveu um método de propina e, em seguida, começou a perguntar o preço de uma vaga no STF.",
+ destaque:"Sem saber que estava com o microfone aberto, descreveu como receber propina e perguntou o preço de uma vaga no STF.",
  fato:"Durante o intervalo comercial de uma entrevista à Jovem Pan, cuja transmissão pela internet seguia no ar sem que ele soubesse, Bolsonaro descreveu em detalhe como se recebe propina em espécie: pede-se um sapato número 43 e “chega o sapato cheio de notinha de R$ 100 verdinha dentro”. Em seguida começou a perguntar quanto valeria uma vaga no Supremo Tribunal Federal e interrompeu a frase ao ser avisado de que estava ao vivo.",
  defesa:"A fala foi feita em tom informal e atribuída por ele a práticas de terceiros no passado, não a conduta própria.",
  fonte:{veiculo:"TV Cultura - Jovem Pan",url:"https://www.youtube.com/watch?v=1eHL8UZu0VI"}},
@@ -587,7 +587,6 @@ const ITENS = [
  fonte:{veiculo:"O Globo - Banco Central",url:"https://oglobo.globo.com/blogs/malu-gaspar/post/2026/04/master-bc-decide-liberar-documentos-do-processo-que-autorizou-vorcaro-a-assumir-banco.ghtml"}},
 
 {eixo:"brasil",tier:2,data:"30 de abril de 2020",
- destaque:"Bolsonaro exonerou os chefes da fiscalização do Ibama dias após reportagem de TV mostrar suas operações contra o garimpo ilegal.",
  fato:"Por atos publicados no Diário Oficial, o governo Bolsonaro exonerou Renê Luiz de Oliveira, coordenador-geral de fiscalização ambiental, e Hugo Ferreira Netto Loss, coordenador de operações de fiscalização do Ibama. As exonerações ocorreram dezoito dias após reportagem televisiva exibir imagens da operação que eles comandavam contra o garimpo ilegal em terras indígenas no sul do Pará. Dias antes, o diretor de proteção ambiental do órgão também fora exonerado. Para o lugar de Oliveira foi indicado um coronel da reserva da Polícia Militar.",
  defesa:"O ministro Ricardo Salles afirmou à época que não havia incentivo ou apoio a nenhuma atividade ilegal e que as operações de fiscalização continuariam.",
  fonte:{veiculo:"Folha de São Paulo - Diário Oficial da União",url:"https://www1.folha.uol.com.br/ambiente/2020/04/ibama-exonera-chefes-de-fiscalizacao-apos-operacao-contra-garimpo.shtml"}},
@@ -731,7 +730,7 @@ function pintaTemas(){
   });
   document.getElementById("temacnt").textContent =
     escolhidos.length===0 ? "" :
-    cheio ? "Três escolhidas. Clique em uma para trocar." :
+    cheio ? "Três escolhidas." :
     `${escolhidos.length} de ${MAX_TEMAS} escolhidas.`;
 
   if(escolhidos.length===0 || (REVELAR_SO_COM_3 && !cheio)){
