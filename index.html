@@ -141,7 +141,7 @@ footer{padding:36px 0 72px;font-size:14px;color:var(--soft)}
     <div class="dots" id="dots"></div>
     <ul class="staticlist" id="staticlist"></ul>
   </div>
-  <p class="lede">Este arquivo agrega as promessas do governo Bolsonaro e <b>mostra o que foi realizado de fato durante a gestão</b>. Os desdobramentos ficaram registrados em decisão judicial, ato oficial ou gravação. Cada item traz a fonte e a posição da defesa.</p>
+  <p class="lede">Este arquivo agrega as promessas do governo Bolsonaro e mostra o que foi <b>realizado de fato durante a gestão</b>. Os desdobramentos ficaram registrados em decisão judicial, ato oficial ou gravação. Cada item traz a fonte e a posição da defesa.</p>
 </div></header>
 
 <section class="cont"><div class="wrap">
@@ -260,6 +260,13 @@ const ITENS = [
  defesa:"O governo sustentou que a flexibilização ampliava o direito à legítima defesa.",
  fonte:{veiculo:"STF / Exército Brasileiro",url:"https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=510073&ori=1"}},
 
+ {eixo:"fiscal",tier:1,data:"Dezembro de 2023",
+ destaque:"Governo Bolsonaro fecha em superávit devido a PEC do Calote que empurra dívidas para o próximo governo.",
+ fato:"Foi declarado inconstitucional o teto anual para pagamento de precatórios criado pelas Emendas Constitucionais 113 e 114 de 2021, apelidadas pela OAB de “PEC do Calote”. O mecanismo limitava o pagamento de dívidas empurrando o restante para exercícios futuros. Por este motivo, em 2022, primeiro ano de vigência do limite, o governo federal registrou superávit primário pela primeira vez desde 2013.",
+ defesa:"O governo sustentou que o novo regime era necessário para manter o teto de gastos e preservar espaço orçamentário para despesas da pandemia.",
+ decisao:"O relator, ministro Luiz Fux, reconheceu que a imposição dos limites em 2021 se justificava pela necessidade de ações de saúde e assistência social durante a pandemia, e restringiu os efeitos do dispositivo ao exercício de 2022. O ministro André Mendonça ficou parcialmente vencido.",
+ fonte:{veiculo:"STF — ADIs 7064 e 7047",url:"https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=521218&ori=1"}},
+
 /* ===================== NÍVEL 2 — ATO OFICIAL OU GRAVAÇÃO ===================== */
 {eixo:"corrupcao",tier:2,data:"24 de abril de 2020",
  destaque:"Sérgio Moro, sua principal fiança anticorrupção, pediu demissão acusando-o de interferir na PF.",
@@ -267,54 +274,52 @@ const ITENS = [
  defesa:"Bolsonaro negou interferência e afirmou que a troca se deu por falta de interlocução com o diretor-geral.",
  fonte:{veiculo:"G1",url:"https://g1.globo.com/politica/noticia/2020/04/24/moro-anuncia-demissao-do-ministerio-da-justica-e-deixa-o-governo-bolsonaro.ghtml"}},
 
-{eixo:"corrupcao",tier:2,grupo:"sigilos",data:"Abril de 2022",
+{eixo:"corrupcao",tier:2,grupo:"sigilos",data:"05 de novembro de 2021",
  fato:"Bolsonaro impôs sigilo de 100 anos sobre seu cartão de vacinação e sobre seus exames de anticorpos contra o coronavírus. Questionado publicamente sobre os sigilos, Bolsonaro respondeu: “Em 100 anos saberá”.",
  defesa:"O governo alegou proteção de dados pessoais de saúde.",
  fonte:{veiculo:"TV Cultura - Ministério da Saúde",url:"https://cultura.uol.com.br/noticias/43774_palacio-do-planalto-estabelece-100-anos-de-sigilos-a-exames-de-anticorpos-de-bolsonaro.html"}},
 
-{eixo:"corrupcao",tier:2,grupo:"sigilos",data:"2022",
- destaque:"Decretou sigilo de cem anos ao registro das 35 visitas de pastores investigados por corrupção no MEC.",
+{eixo:"corrupcao",tier:2,grupo:"sigilos",data:"30 de junho de 2022",
+ destaque:"Decretou sigilo de cem anos ao histórico de visitas de pastores investigados por corrupção no MEC.",
  fato:"Bolsonaro impôs sigilo de cem anos ao registro de entrada e saída de dois pastores investigados por corrupção no MEC ao Palácio do Planalto. Após a repercussão, os dados foram divulgados e revelaram 35 visitas desde 2019. Ambos eram investigados pela Polícia Federal por tráfico de influência e pedido de propina.",
  defesa:"O governo alegou proteção da intimidade dos visitantes.",
  fonte:{veiculo:"Terra - Secretaria-Geral da Presidência",url:"https://www.terra.com.br/noticias/brasil/politica/stf-impoe-sigilo-no-inquerito-sobre-os-pastores-lobistas-no-mec,e3cace1a95085f8525102a9e46117febqyrrze5t.html"}},
 
-{eixo:"corrupcao",tier:2,grupo:"sigilos",data:"2022",
+{eixo:"corrupcao",tier:2,grupo:"sigilos",data:"31 de julho 2021",
  fato:"Foram classificadas por cem anos as informações do crachá de acesso ao Palácio do Planalto dos filhos do presidente, Carlos e Eduardo Bolsonaro, nenhum deles ocupante de cargo no Executivo federal.",
- defesa:"O governo alegou razões de segurança e proteção de dados pessoais.",
- fonte:{veiculo:"Secretaria-Geral da Presidência",url:""}},
+ defesa:"O governo alegou razões de proteção da intimidade, da vida privada, da honra e da imagem dos familiares.",
+ fonte:{veiculo:"G1 - Secretaria-Geral da Presidência",url:"https://g1.globo.com/politica/noticia/2021/07/31/governo-impoe-sigilo-de-cem-anos-sobre-crachas-de-acesso-dos-filhos-de-bolsonaro-ao-planalto.ghtml"}},
 
-{eixo:"corrupcao",tier:2,grupo:"sigilos",data:"2021",
+{eixo:"corrupcao",tier:2,grupo:"sigilos",data:"8 de junho 2021",
  fato:"O processo interno do Exército contra o general Eduardo Pazuello, aberto por sua participação em ato político ao lado do presidente em maio de 2021, foi classificado com sigilo de cem anos. Pazuello não foi punido.",
  defesa:"O Exército alegou que processos disciplinares internos têm caráter reservado.",
- fonte:{veiculo:"Exército Brasileiro",url:""}},
+ fonte:{veiculo:"TV Cultura - Exército Brasileiro",url:"https://cultura.uol.com.br/noticias/25628_exercito-impoe-sigilo-de-100-anos-a-processo-administrativo-contra-pazuello.html"}},
 
-{eixo:"corrupcao",tier:2,grupo:"sigilos",data:"2022",
- fato:"A Receita Federal impôs sigilo de cem anos aos documentos do processo sobre a rachadinha no gabinete do senador Flávio Bolsonaro, que até então estavam disponíveis publicamente.",
+{eixo:"corrupcao",tier:2,grupo:"sigilos",data:"30 de setembro de 2022",
+ fato:"Imposto sigilo de cem anos aos documentos do processo sobre o caso da rachadinha envolvendo Flávio Bolsonaro, que até então estavam disponíveis publicamente.",
  defesa:"A Receita alegou que os documentos continham informações pessoais e restringiu o acesso a agentes públicos e às partes envolvidas.",
- fonte:{veiculo:"Receita Federal",url:""}},
+ fonte:{veiculo:"Estadão - Receita Federal",url:"https://www.estadao.com.br/politica/sigilo-100-anos-bolsonaro-65-vezes-no-governo/"}},
 
-{eixo:"corrupcao",tier:2,grupo:"sigilos",data:"2021",
- fato:"O Ministério da Saúde impôs sigilo aos contratos de aquisição da vacina Covaxin, acordo de R$ 1,6 bilhão então sob investigação da CPI da Pandemia por suspeita de irregularidade no preço e na intermediação.",
+{eixo:"corrupcao",tier:2,grupo:"sigilos",data:"26 de setembro de 2022",
+ fato:"565 visitas à Michelle Bolsonaro durante os últimos 13 meses do governo são colocadas em sigilo.",
+ defesa:"O governo afirmou que o histórico relativo à prestação de assistência consular contém informações pessoais relativas à intimidade, vida privada, honra e imagem e, portanto, devem ser protegidos.",
+ fonte:{veiculo:"UOL - Secretaria-Geral da Presidência",url:"https://noticias.uol.com.br/ultimas-noticias/agencia-estado/2022/09/26/governo-bolsonaro-decreta-sigilo-de-100-anos-ate-em-visitas-a-michelle.htm"}},
+
+{eixo:"corrupcao",tier:2,grupo:"sigilos",data:"09 de agosto 2021",
+ fato:"O Ministério da Saúde impôs sigilo aos contratos de aquisição da vacina Covaxin, acordo de R$ 1,6 bilhão que se tornou alvo de investigações por suspeita de irregularidade no preço e na intermediação.",
  defesa:"O ministério alegou que a negociação ainda estava em curso.",
- decisao:"A Justiça derrubou o sigilo em agosto de 2021.",
- fonte:{veiculo:"Ministério da Saúde",url:""}},
+ fonte:{veiculo:"Ministério da Saúde",url:"https://oglobo.globo.com/politica/ministerio-da-saude-poe-sob-sigilo-documentos-sobre-compra-da-covaxin-25147553"}},
 
-{eixo:"corrupcao",tier:2,grupo:"sigilos",data:"2022",
- fato:"A Polícia Rodoviária Federal negou por cem anos o acesso aos procedimentos administrativos dos agentes envolvidos na morte de Genivaldo de Jesus Santos, asfixiado dentro do porta-malas de uma viatura durante abordagem em Sergipe.",
+{eixo:"corrupcao",tier:2,grupo:"sigilos",data:"23 de junho de 2022",
+ fato:"A Polícia Rodoviária Federal colocou sob sigilo os procedimentos administrativos dos agentes envolvidos na morte de Genivaldo de Jesus Santos, asfixiado dentro do porta-malas de uma viatura durante abordagem em Sergipe.",
  defesa:"A corporação alegou proteção da intimidade dos servidores envolvidos.",
  decisao:"A própria PRF retirou o sigilo após a repercussão do caso.",
- fonte:{veiculo:"Polícia Rodoviária Federal",url:""}},
+ fonte:{veiculo:"O Globo - Polícia Rodoviária Federal",url:"https://oglobo.globo.com/brasil/noticia/2022/06/mpf-investiga-suposto-sigilo-de-100-anos-da-prf-sobre-investigacao-de-policiais-envolvidos-na-morte-de-genivaldo-santos.ghtml"}},
 
 {eixo:"corrupcao",tier:2,data:"22 de abril de 2020",
  fato:"Em reunião ministerial gravada, Bolsonaro declarou que trocaria pessoas na estrutura de segurança porque não podia ser surpreendido com notícias envolvendo pessoas próximas a ele.",
  defesa:"A defesa sustentou que a fala tratava da segurança pessoal da família, não da Polícia Federal.",
  fonte:{veiculo:"G1 - Vídeo da reunião ministerial divulgado pelo STF",url:"https://g1.globo.com/politica/noticia/2020/05/22/em-reuniao-bolsonaro-diz-nao-posso-ser-surpreendido-com-noticias-po-eu-tenho-a-pf-que-nao-me-da-informacoes-assista.ghtml"}},
-
-{eixo:"brasil",tier:2,data:"22 de abril de 2020",
- destaque:"Em reunião gravada, o ministro do Meio Ambiente propôs usar a pandemia para “passar a boiada”.",
- fato:"Na mesma reunião gravada, o ministro do Meio Ambiente Ricardo Salles propôs aproveitar o foco da imprensa na pandemia para “ir passando a boiada” e flexibilizar normas infralegais de proteção ambiental.",
- defesa:"Salles afirmou que se referia a simplificação regulatória, não a afrouxamento da fiscalização.",
- fonte:{veiculo:"G1 - Vídeo da reunião ministerial divulgado pelo STF",url:"https://g1.globo.com/politica/noticia/2020/05/22/ministro-do-meio-ambiente-defende-passar-a-boiada-e-mudar-regramento-e-simplificar-normas.ghtml"}},
 
 {eixo:"instituic",tier:2,data:"22 de abril de 2020",
  fato:"Na mesma reunião gravada, o ministro da Educação Abraham Weintraub afirmou que gostaria de prender os ministros do STF.",
@@ -329,7 +334,7 @@ const ITENS = [
 {eixo:"instituic",tier:2,data:"18 de julho de 2022",
  fato:"Bolsonaro reuniu embaixadores estrangeiros no Palácio da Alvorada para questionar o sistema eleitoral brasileiro. A reunião foi transmitida pela TV Brasil, emissora pública, com estrutura oficial do Estado.",
  defesa:"O governo sustentou que se tratava de esclarecimento institucional a corpo diplomático.",
- fonte:{veiculo:"TV Brasil / Planalto",url:"https://tvbrasil.ebc.com.br/reporter-brasil-tarde/2026/08/tse-reune-embaixadores-e-explica-o-funcionamento-das-urnas-eletronicas"}},
+ fonte:{veiculo:"TV Brasil - Planalto",url:"https://tvbrasil.ebc.com.br/reporter-brasil-tarde/2026/08/tse-reune-embaixadores-e-explica-o-funcionamento-das-urnas-eletronicas"}},
 
 {eixo:"gestao",tier:2,data:"28 de abril de 2020",
  destaque:"Perguntado sobre o recorde de mortes por covid, respondeu “e daí? Quer que eu faça o quê?”.",
@@ -337,11 +342,10 @@ const ITENS = [
  defesa:"Bolsonaro afirmou depois que a frase foi tirada de contexto e que se referia à sua condição de não ser médico.",
  fonte:{veiculo:"Valor Econômico - Registro em vídeo",url:"https://valor.globo.com/politica/noticia/2020/04/28/bolsonaro-fala-em-retomada-da-atividade-apos-reuniao-com-empresarios-da-firjan.ghtml"}},
 
-{eixo:"gestao",tier:2,data:"Julho de 2020",
- destaque:"Vetou a obrigatoriedade de máscara em comércio, escolas e templos. O Congresso derrubou.",
- fato:"Bolsonaro vetou trechos da Lei 14.019/2020 que tornavam obrigatório o uso de máscara em estabelecimentos comerciais, escolas, igrejas e órgãos públicos. O Congresso Nacional derrubou os vetos.",
+{eixo:"gestao",tier:2,data:"03 de julho de 2020",
+ fato:"Bolsonaro vetou trechos da Lei 14.019/2020 que tornavam obrigatório o uso de máscara em estabelecimentos comerciais, escolas, igrejas e órgãos públicos.",
  defesa:"O governo alegou que a obrigatoriedade invadia a esfera privada e a autonomia individual.",
- fonte:{veiculo:"Diário Oficial — Lei 14.019/2020",url:""}},
+ fonte:{veiculo:"Diário Oficial — Lei 14.019/2020",url:"https://www12.senado.leg.br/noticias/materias/2020/07/03/bolsonaro-veta-uso-obrigatorio-de-mascara-no-comercio-em-escolas-e-em-igrejas"}},
 
 {eixo:"gestao",tier:2,data:"07 de outubro de 2021",
  fato:"Bolsonaro vetou trechos da Lei 14.214/2021 que previam distribuição gratuita de absorventes a estudantes de baixa renda, pessoas em situação de rua e presas. O Congresso derrubou os vetos em 2022.",
@@ -461,7 +465,6 @@ const ITENS = [
  fonte:{veiculo:"Ministério da Saúde",url:"https://g1.globo.com/saude/noticia/2023/01/20/ministerio-da-saude-decreta-emergencia-de-saude-publica-para-combater-desassistencia-de-indigenas-yanomami.ghtml"}},
 
 {eixo:"brasil",tier:2,data:"09 de julho de 2025",
- destaque:"Os EUA impuseram tarifa de 50% a produtos brasileiros, citando Bolsonaro.",
  fato:"O governo dos Estados Unidos impôs tarifa de 50% sobre produtos brasileiros, apresentando a medida como resposta ao processo judicial contra Bolsonaro. A PF apurou que o ex-presidente e o filho Eduardo procuraram autoridades americanas com o objetivo de obter sanções contra agentes públicos brasileiros.",
  defesa:"Bolsonaro negou ter pedido sanções e afirmou que a decisão foi exclusiva do governo americano.",
  fonte:{veiculo:"The Washington Post",url:"https://www.washingtonpost.com/world/2025/07/09/trump-tariffs-brazil-jair-bolsonaro/"}},
@@ -472,11 +475,10 @@ const ITENS = [
  defesa:"O governo sustentou que a medida respondia ao choque internacional de preços do petróleo.",
  fonte:{veiculo:"Diário Oficial",url:"https://www.in.gov.br/en/web/dou/-/lei-complementar-n-194-de-23-de-junho-de-2022-410028232"}},
 
-{eixo:"fiscal",tier:2,data:"Julho de 2022",
- destaque:"Elevou o Auxílio Brasil a R$ 600 com prazo que se encerrava logo após a eleição.",
+{eixo:"fiscal",tier:2,data:"24 de junho de 2022",
  fato:"A Emenda Constitucional 123, aprovada a três meses da eleição, declarou estado de emergência para permitir a elevação do Auxílio Brasil a R$ 600 e a criação de novos benefícios, com vigência limitada a 31 de dezembro de 2022. A medida contornou as restrições da lei eleitoral à criação de benefícios em ano de pleito.",
  defesa:"O governo sustentou que a emergência decorria da inflação de alimentos e combustíveis.",
- fonte:{veiculo:"Diário Oficial — EC 123/2022",url:""}},
+ fonte:{veiculo:"Valor Econômico - Diário Oficial (EC 123/2022)",url:"https://valor.globo.com/politica/noticia/2022/06/24/a-trs-meses-das-eleies-bolsonaro-confirma-aumento-do-auxlio-brasil-para-r-600.ghtml"}},
 
 {eixo:"fiscal",tier:2,data:"Março e abril de 2020",
  fato:"A proposta inicial do governo para o auxílio emergencial durante a pandemia era de R$ 200 mensais. O valor foi elevado a R$ 600 por iniciativa do Congresso Nacional, contra a posição original da equipe econômica.",
@@ -484,19 +486,18 @@ const ITENS = [
  fonte:{veiculo:"Congresso Nacional — Lei 13.982/2020",url:""}},
 
 {eixo:"gestao",tier:2,data:"16 de janeiro de 2020",
- destaque:"O secretário de Cultura gravou vídeo oficial reproduzindo trecho de discurso de Goebbels.",
+ destaque:"O secretário de Cultura gravou vídeo oficial reproduzindo trecho de discurso de ministro da Alemanha Nazista.",
  fato:"Roberto Alvim, secretário especial da Cultura, divulgou vídeo institucional em que reproduziu trecho de discurso de Joseph Goebbels, ministro da propaganda nazista, com música de Wagner ao fundo. Foi exonerado no dia seguinte por ato publicado no Diário Oficial.",
  defesa:"Alvim afirmou que a coincidência foi acidental e que não conhecia a origem do texto.",
  fonte:{veiculo:"Vídeo oficial / Diário Oficial da União",url:""}},
 
  {eixo:"corrupcao",tier:2,data:"27 de outubro de 2021",
- destaque:"Com o microfone aberto sem saber, descreveu um método de propina e começou a falar no preço de uma vaga no STF.",
+ destaque:"Sem saber que estava com o microfone, Bolsonaro descreveu um método de propina referente a como comprar uma vaga no STF.",
  fato:"Durante o intervalo comercial de uma entrevista à Jovem Pan — cuja transmissão pela internet seguia no ar sem que ele soubesse — Bolsonaro descreveu em detalhe como se recebe dinheiro em espécie sem rastro: pede-se um sapato número 43 e “chega o sapato cheio de notinha de R$ 100 verdinha dentro”. Em seguida começou a perguntar quanto valeria uma vaga no Supremo Tribunal Federal e interrompeu a frase ao ser avisado de que estava ao vivo.",
  defesa:"A fala foi feita em tom informal e atribuída por ele a práticas de terceiros no passado — “o cara que fazia contrato levava uma caixa de dinheiro embora” —, não a conduta própria.",
  fonte:{veiculo:"Jovem Pan — transmissão ao vivo",url:""}},
 
 {eixo:"gestao",tier:2,data:"24 de março de 2020",
- destaque:"Em pronunciamento oficial em cadeia nacional, chamou a covid-19 de “gripezinha”.",
  fato:"Em pronunciamento oficial transmitido em cadeia nacional de rádio e televisão, Bolsonaro minimizou a gravidade da covid-19, afirmando que no seu caso não sentiria nada além de “uma gripezinha”, e criticou as medidas de isolamento adotadas por governadores e prefeitos.",
  defesa:"Bolsonaro afirmou depois que se referia ao próprio histórico de saúde e que sua preocupação era com o impacto econômico do fechamento.",
  fonte:{veiculo:"Pronunciamento oficial — cadeia nacional",url:""}},
@@ -519,13 +520,13 @@ const ITENS = [
 
 /* ===================== NÍVEL 3 — ACUSAÇÃO EM CURSO ===================== */
 {eixo:"corrupcao",tier:3,data:"Julho de 2024",
- destaque:"Indiciado pela Polícia Federal por peculato e lavagem no caso das joias sauditas.",
+ destaque:"Bolsonaro foi investigado por peculato e lavagem no caso das joias sauditas.",
  fato:"A Polícia Federal indiciou Bolsonaro por peculato, lavagem de dinheiro e associação criminosa no caso dos presentes recebidos da Arábia Saudita, apurando tentativa de incorporação de bens do acervo público ao patrimônio privado.",
  defesa:"A defesa nega irregularidades e sustenta que os bens eram presentes pessoais, não acervo da União.",
  fonte:{veiculo:"Polícia Federal",url:""}},
 
 {eixo:"fiscal",tier:3,data:"Abril e agosto de 2022",
- destaque:"O TCU investigou a compra de 60 próteses penianas pelo Exército, a R$ 56 mil cada.",
+ destaque:"No orçamento do governo Bolsonaro foi proposta e realizada a aquisição de 60 próteses penianas pelo Exército, a R$ 56 mil cada.",
  fato:"O Tribunal de Contas da União abriu investigação sobre a aquisição, pelo Exército, de 60 próteses penianas infláveis ao custo de R$ 3,4 milhões — cerca de R$ 56 mil por unidade —, compra aprovada pelo Ministério da Defesa. A apuração ocorreu no mesmo período em que as Forças Armadas eram questionadas pela compra de comprimidos de sildenafila. Em entrevista em agosto, Bolsonaro defendeu pessoalmente as duas aquisições.",
  defesa:"O Ministério da Defesa sustentou que a sildenafila é usada no tratamento de hipertensão pulmonar, além da disfunção erétil, e que as próteses atendem beneficiários do sistema de saúde militar. Bolsonaro afirmou que a quantidade de comprimidos era proporcionalmente pequena ao efetivo.",
  fonte:{veiculo:"Tribunal de Contas da União",url:""}},
@@ -537,13 +538,13 @@ const ITENS = [
  fonte:{veiculo:"Polícia Federal / STF — Pet 10405",url:""}},
 
 {eixo:"corrupcao",tier:3,data:"Fevereiro de 2024",
- destaque:"Indiciado por uso da agência de inteligência do Estado para vigiar autoridades e adversários.",
+ destaque:"Bolsonaro foi indiciado por uso da agência de inteligência do Estado para vigiar autoridades e adversários.",
  fato:"A Polícia Federal indiciou Bolsonaro e outros investigados por envolvimento em esquema de monitoramento ilegal por meio da Abin, apontando uso da agência de inteligência de Estado para vigiar autoridades e produzir material contra adversários.",
  defesa:"Bolsonaro nega participação e conhecimento do esquema.",
  fonte:{veiculo:"Polícia Federal",url:""}},
 
 {eixo:"brasil",tier:3,data:"Junho e setembro de 2026",
- destaque:"Um filho dele foi condenado por pressionar o STF articulando, nos EUA, sanções econômicas contra o Brasil.",
+ destaque:"Eduardo Bolsonaro foi condenado por ajudar a articular nos EUA sanções econômicas contra o Brasil.",
  fato:"A Primeira Turma do STF condenou o ex-deputado Eduardo Bolsonaro a 4 anos e 2 meses de prisão, em regime inicial semiaberto, por coação no curso do processo. A corte concluiu que ele usou sua condição de parlamentar para articular junto a autoridades norte-americanas sanções contra ministros do Supremo e medidas econômicas contra o Brasil, com o objetivo de constranger o tribunal durante o julgamento do pai. O relator reconheceu ao menos nove episódios da prática, e a condenação foi unânime. Em setembro de 2026 a Turma rejeitou os embargos de declaração da defesa e manteve a sentença.",
  defesa:"A Defensoria Pública da União sustentou que não houve ameaça grave suficiente para configurar o crime e que a atuação no exterior estava protegida pela liberdade de expressão e pela imunidade parlamentar.",
  decisao:"A condenação ainda não transitou em julgado: cabem novos recursos antes da execução da pena.",
